@@ -10,10 +10,11 @@ public class movetest : MonoBehaviour
 {
     [SerializeField] int Movespeed = 5;
     private Rigidbody2D rb;
-    [SerializeField] int powar_JP;
+
     [SerializeField] float jumpHeight = 7f;
     [SerializeField] bool jumped = true;
-    [SerializeField] bool isPressed;
+    [SerializeField] bool isJumped;
+
 
     IEnumerator coroutine;
 
@@ -26,6 +27,8 @@ public class movetest : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision) // permet de désactiver le saut si pas encore retombé
     {   
         jumped = false;
+        isJumped = false;
+        StopAllCoroutines();
         
     }
 
@@ -57,34 +60,23 @@ public class movetest : MonoBehaviour
 //                                  MECANIQUE DE SAUT
 
 
-        if ((Input.GetKeyDown(KeyCode.Space)) && (jumped == false)) // Appuyer fait démarré le décompte
-        {
-            StartCoroutine(pressed());
-            jumped = true;
 
-        }
-        else if (isPressed == true && (jumped == false) && (Input.GetKeyUp(KeyCode.Space))) // Si relaché après le décompte, un grand saut
-        {
-            Debug.Log(" Grand saut");
-            rb.AddForce(Vector2.up * 60 * powar_JP);
-            jumped = true;
-            isPressed = false;
-            StopAllCoroutines();
-        }
-        else if (isPressed == false && (Input.GetKeyUp(KeyCode.Space)) && (jumped == false)) // Si relaché avant le décompte, un petit saut
+        if (Input.GetKey(KeyCode.Space) && (jumped == false)) // Si relaché avant le décompte, un petit saut
         {
             Debug.Log(" petit saut");
-            rb.AddForce(Vector2.up * 60 * jumpHeight);
+            rb.AddForce(Vector2.up * 25 * jumpHeight);
             jumped = true;
-            StopAllCoroutines();
+            StartCoroutine(Time_jumped());
+
+           
         }
 
 
-        if (Input.GetKey(KeyCode.Space) && jumped == true) // Si relaché avant le décompte, un petit saut
+        if (Input.GetKey(KeyCode.Space) && isJumped == true) // Si relaché avant le décompte, un petit saut
         {
             Debug.Log(" plane");
             rb.velocity = Vector3.zero;
-            rb.gravityScale = 4;
+            rb.gravityScale =  7;
         }
         else
         {
@@ -95,12 +87,11 @@ public class movetest : MonoBehaviour
 
     }
 
-    IEnumerator pressed()
+    IEnumerator Time_jumped()
     {
-        yield return new WaitForSeconds(1);
-        isPressed = true;
+        yield return new WaitForSeconds(0.3f);
+        isJumped = true;
+
     }
-   
-   
 
 }
