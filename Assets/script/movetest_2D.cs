@@ -12,6 +12,7 @@ public class movetest : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] float jumpHeight = 7f;
+    [SerializeField] CircleCollider2D Trigger_jump;
     [SerializeField] bool jumped = true;
     [SerializeField] bool isJumped;
 

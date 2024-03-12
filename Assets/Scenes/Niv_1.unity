@@ -256,7 +256,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.030903984, y: 0.007194084, z: -0.00022280813, w: -0.9994965}
-  m_LocalPosition: {x: -58.91, y: -0.93069553, z: 0}
+  m_LocalPosition: {x: 23.1988, y: -0.93069553, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -664,7 +664,7 @@ Transform:
   m_GameObject: {fileID: 893713611}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.208797, y: -6.05, z: -8.775491}
+  m_LocalPosition: {x: 73.9, y: -6.05, z: -8.775491}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -704,7 +704,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893713611}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -726,12 +726,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.85}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.26571846
 --- !u!70 &893713615
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -834,6 +834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movespeed: 5
   jumpHeight: 25
+  Trigger_jump: {fileID: 893713614}
   jumped: 1
   isJumped: 0
 --- !u!1 &1093009136
@@ -928,7 +929,7 @@ Transform:
   m_GameObject: {fileID: 1246391578}
   serializedVersion: 2
   m_LocalRotation: {x: -0.030903984, y: 0.007194084, z: -0.00022280813, w: -0.9994965}
-  m_LocalPosition: {x: -15.466991, y: -1.2168822, z: -18.55106}
+  m_LocalPosition: {x: 66.64181, y: -1.2168822, z: -18.55106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
