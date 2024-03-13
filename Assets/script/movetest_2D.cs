@@ -14,7 +14,11 @@ public class movetest : MonoBehaviour
     [SerializeField] float jumpHeight = 7f;
     [SerializeField] CircleCollider2D Trigger_jump;
     [SerializeField] bool jumped = true;
-    [SerializeField] bool isJumped;
+    [SerializeField] Transform check;
+    public float groundCheckRadius;
+    [SerializeField] LayerMask collisionPlayer;
+    private bool isplaned;
+    public bool Grounded;
 
 
     IEnumerator coroutine;
@@ -25,16 +29,29 @@ public class movetest : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
     }
-    private void OnCollisionStay2D(Collision2D collision) // permet de désactiver le saut si pas encore retombé
-    {   
-        jumped = false;
-        isJumped = false;
-        StopAllCoroutines();
+
+    private void Jump()
+    {
+         Grounded = Physics2D.OverlapCircle(check.position, groundCheckRadius, collisionPlayer);
+        if (Grounded == true)
+        {
+            StopAllCoroutines();
+            isplaned = false;
+            Debug.Log("Stop");
+        }
+
         
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(check.position, groundCheckRadius);
     }
 
     void Update() // Fonction Update appelle la fonction Movement
     {
+        Jump();
         Movement();
 
     }
@@ -62,18 +79,17 @@ public class movetest : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.Space) && (jumped == false)) // Si relaché avant le décompte, un petit saut
+        if (Input.GetKey(KeyCode.Space) && Grounded == true) // Si relaché avant le décompte, un petit saut
         {
             Debug.Log(" petit saut");
-            rb.AddForce(Vector2.up * 25 * jumpHeight);
-            jumped = true;
+            rb.AddForce(Vector2.up * jumpHeight * 25);
             StartCoroutine(Time_jumped());
 
            
         }
 
 
-        if (Input.GetKey(KeyCode.Space) && isJumped == true) // Si relaché avant le décompte, un petit saut
+        if (Input.GetKey(KeyCode.Space) && isplaned == true) // Si relaché avant le décompte, un petit saut
         {
             Debug.Log(" plane");
             rb.velocity = Vector3.zero;
@@ -90,8 +106,8 @@ public class movetest : MonoBehaviour
 
     IEnumerator Time_jumped()
     {
-        yield return new WaitForSeconds(0.3f);
-        isJumped = true;
+        yield return new WaitForSeconds(0.2f);
+        isplaned = true;
 
     }
 
