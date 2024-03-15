@@ -12,13 +12,11 @@ public class movetest : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] float jumpHeight = 7f;
-    [SerializeField] CircleCollider2D Trigger_jump;
-    [SerializeField] bool jumped = true;
     [SerializeField] Transform check;
-    public float groundCheckRadius;
+    [SerializeField] float groundCheckRadius;
     [SerializeField] LayerMask collisionPlayer;
     private bool isplaned;
-    public bool Grounded;
+    [SerializeField] bool Grounded;
 
 
     IEnumerator coroutine;
@@ -30,6 +28,11 @@ public class movetest : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
     private void Jump()
     {
          Grounded = Physics2D.OverlapCircle(check.position, groundCheckRadius, collisionPlayer);
@@ -37,7 +40,7 @@ public class movetest : MonoBehaviour
         {
             StopAllCoroutines();
             isplaned = false;
-            Debug.Log("Stop");
+            //Debug.Log("Stop");
         }
 
         
@@ -52,7 +55,7 @@ public class movetest : MonoBehaviour
     void Update() // Fonction Update appelle la fonction Movement
     {
         Jump();
-        Movement();
+       
 
     }
 
@@ -81,8 +84,8 @@ public class movetest : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && Grounded == true) // Si relaché avant le décompte, un petit saut
         {
-            Debug.Log(" petit saut");
-            rb.AddForce(Vector2.up * jumpHeight * 25);
+            //Debug.Log(" petit saut");
+            rb.AddForce( Vector2.up * jumpHeight * 10 ) ;
             StartCoroutine(Time_jumped());
 
            
@@ -91,7 +94,7 @@ public class movetest : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && isplaned == true) // Si relaché avant le décompte, un petit saut
         {
-            Debug.Log(" plane");
+            //Debug.Log(" plane");
             rb.velocity = Vector3.zero;
             rb.gravityScale =  7;
         }

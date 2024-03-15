@@ -16,7 +16,7 @@ public class apparition : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] SpriteRenderer image;
     [SerializeField] BoxCollider2D touch;
-    [SerializeField] int powar_plat;
+    [SerializeField] int powar_plat = 5;
     private float XPlayer;
     private float YPlayer;
     private bool TimeOff;
@@ -82,8 +82,9 @@ public class apparition : MonoBehaviour
         plat_rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         plat_rb.AddForce( Vector2.right * 180 * powar_plat);
-        yield return new WaitForSeconds(0.3f) ; // Temps de la distance parcouru par la plateforme
         touch.enabled = true;
+        yield return new WaitForSeconds(0.3f) ; // Temps de la distance parcouru par la plateforme
+        //touch.enabled = true;
         plat_rb.gravityScale = originalGravity;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
