@@ -467,7 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 681790616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: --Trigger--
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3779,10 +3779,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3e0bed04ed73d9b4f8fc9f87cb1bf877, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3799,7 +3799,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1882218021}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3e0bed04ed73d9b4f8fc9f87cb1bf877, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3897,7 +3897,7 @@ MonoBehaviour:
   Player: {fileID: 893713611}
   image: {fileID: 1882218028}
   touch: {fileID: 1882218024}
-  powar_plat: 0
+  powar_plat: 5
 --- !u!114 &1882218027
 MonoBehaviour:
   m_ObjectHideFlags: 0
