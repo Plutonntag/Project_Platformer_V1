@@ -6,6 +6,7 @@ public class disparition : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb_player;
     [SerializeField] SpriteRenderer image;
+    [SerializeField] BoxCollider2D touch_trigger;
     [SerializeField] BoxCollider2D touch;
     public bool absorbed = false;
 
@@ -26,7 +27,7 @@ public class disparition : MonoBehaviour
     private void TouchTrigger()
     {
 
-        if (rb_player.IsTouching(touch))
+        if (rb_player.IsTouching(touch_trigger))
         {
 
 
@@ -39,6 +40,7 @@ public class disparition : MonoBehaviour
                 absorbed = true;
                 image.enabled = false;
                 touch.enabled = false;
+                touch_trigger.enabled = false;
 
             }
 

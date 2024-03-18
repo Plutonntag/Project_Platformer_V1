@@ -16,6 +16,7 @@ public class apparition : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] SpriteRenderer image;
     [SerializeField] BoxCollider2D touch;
+    [SerializeField] BoxCollider2D touch_trigger;
     [SerializeField] int powar_plat = 5;
     private float XPlayer;
     private float YPlayer;
@@ -61,7 +62,7 @@ public class apparition : MonoBehaviour
 
     IEnumerator Thewait() // Coroutine du cooldown
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         TimeOff = true;
         Debug.Log(" cooldown");
         
@@ -78,13 +79,14 @@ public class apparition : MonoBehaviour
         image.enabled = true; // apparition de la plateforme
         float originalGravity = plat_rb.gravityScale; // mouvement de la plateforme
         plat_rb.gravityScale = 0f;
-        plat_rb.constraints = RigidbodyConstraints2D.None;
+ 
         plat_rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         plat_rb.AddForce( Vector2.right * 180 * powar_plat);
         touch.enabled = true;
         yield return new WaitForSeconds(0.3f) ; // Temps de la distance parcouru par la plateforme
         //touch.enabled = true;
+        touch_trigger.enabled = true;
         plat_rb.gravityScale = originalGravity;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
@@ -106,6 +108,7 @@ public class apparition : MonoBehaviour
         plat_rb.AddForce(Vector2.down * 120 * powar_plat);// Place la plateforme en dessous du perso
         yield return new WaitForSeconds(0.1f); // Temps de la distance parcouru par la plateforme
         touch.enabled = true;
+        touch_trigger.enabled = true;
         plat_rb.gravityScale = originalGravity;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }

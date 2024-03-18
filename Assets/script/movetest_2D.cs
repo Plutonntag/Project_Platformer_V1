@@ -31,6 +31,7 @@ public class movetest : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        Jump();
     }
 
     private void Jump()
@@ -54,7 +55,7 @@ public class movetest : MonoBehaviour
 
     void Update() // Fonction Update appelle la fonction Movement
     {
-        Jump();
+       
        
 
     }
