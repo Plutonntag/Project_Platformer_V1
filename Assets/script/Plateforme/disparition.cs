@@ -5,6 +5,7 @@ using UnityEngine;
 public class disparition : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb_player;
+    public movetest Chara;
     [SerializeField] SpriteRenderer image;
     [SerializeField] BoxCollider2D touch_trigger;
     [SerializeField] BoxCollider2D touch;
@@ -27,7 +28,7 @@ public class disparition : MonoBehaviour
     private void TouchTrigger()
     {
 
-        if (rb_player.IsTouching(touch_trigger))
+        if (rb_player.IsTouching(touch_trigger) && Chara.plat_absorb == false)
         {
 
 
@@ -41,6 +42,8 @@ public class disparition : MonoBehaviour
                 image.enabled = false;
                 touch.enabled = false;
                 touch_trigger.enabled = false;
+                Chara.plat_absorb = true;
+
 
             }
 

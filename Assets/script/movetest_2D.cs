@@ -15,8 +15,10 @@ public class movetest : MonoBehaviour
     [SerializeField] Transform check;
     [SerializeField] float groundCheckRadius;
     [SerializeField] LayerMask collisionPlayer;
+    [SerializeField] SpriteRenderer sprite;
     private bool isplaned;
     [SerializeField] bool Grounded;
+    public bool plat_absorb;
 
 
     IEnumerator coroutine;
@@ -67,14 +69,14 @@ public class movetest : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow)) // Mouvement droite
         {
-
+            sprite.flipX = false;
             transform.Translate(Vector3.right * Movespeed * Time.deltaTime);
             
 
         }
         else if (Input.GetKey(KeyCode.LeftArrow)) // Mouvement gauche
         {
-
+            sprite.flipX = true;
             transform.Translate(Vector3.left * Movespeed * Time.deltaTime);
 
         }
