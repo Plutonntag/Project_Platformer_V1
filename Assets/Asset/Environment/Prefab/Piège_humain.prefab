@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5178774102630944796}
   - component: {fileID: 1390699679475700436}
   - component: {fileID: 3645148403220107990}
+  - component: {fileID: 4272432792719104961}
   m_Layer: 0
   m_Name: "Pi\xE8ge_humain"
   m_TagString: Untagged
@@ -149,6 +150,38 @@ MonoBehaviour:
   Player: {fileID: 0}
   checker_plat: {fileID: 8032051288388286943}
   Plat: {fileID: 0}
+--- !u!114 &4272432792719104961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298429219145427686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.8000002, y: -1.3199999, z: 0}
+  - {x: -0.8099675, y: 0.7557381, z: 0}
+  - {x: -0.6418039, y: 1.2998177, z: 0}
+  - {x: 0.7261743, y: 1.3199998, z: 0}
+  - {x: 0.8247239, y: 0.7658294, z: 0}
+  - {x: 0.82109284, y: -1.2998176, z: 0}
+  m_ShapePathHash: -1256717150
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -18216
+  m_LocalBounds:
+    m_Center: {x: 0.0073782206, y: 0, z: 0}
+    m_Extent: {x: 0.81734574, y: 1.3199999, z: 0}
 --- !u!1 &1887612917993596114
 GameObject:
   m_ObjectHideFlags: 0

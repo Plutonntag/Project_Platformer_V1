@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3857980676730502867}
   - component: {fileID: 5537097202265659383}
   - component: {fileID: 5229416441938707445}
+  - component: {fileID: 8959619950903966032}
   m_Layer: 0
   m_Name: Sol
   m_TagString: Untagged
@@ -148,3 +149,54 @@ PolygonCollider2D:
       - {x: -4.1058044, y: 0.13962829}
       - {x: -5.7804623, y: -0.24374138}
   m_UseDelaunayMesh: 0
+--- !u!114 &8959619950903966032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353226781765575832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -5.927437, y: 0.028695941, z: 0}
+  - {x: -5.927437, y: 0.22770846, z: 0}
+  - {x: -5.2927322, y: 0.3642069, z: 0}
+  - {x: -5.0619698, y: 0.5949707, z: 0}
+  - {x: -4.6773624, y: 0.45394802, z: 0}
+  - {x: -3.6389236, y: 0.6334313, z: 0}
+  - {x: -2.1133194, y: 0.76163363, z: 0}
+  - {x: -1.5876904, y: 0.7872741, z: 0}
+  - {x: 0.29688072, y: 0.7872741, z: 0}
+  - {x: 1.6045418, y: 0.5180501, z: 0}
+  - {x: 2.1558113, y: 0.5180501, z: 0}
+  - {x: 2.3352947, y: 0.8641958, z: 0}
+  - {x: 2.976305, y: 0.80009484, z: 0}
+  - {x: 3.0404053, y: 0.53086996, z: 0}
+  - {x: 3.450653, y: 0.4924097, z: 0}
+  - {x: 3.673851, y: 0.7025671, z: 0}
+  - {x: 4.106159, y: 0.5521977, z: 0}
+  - {x: 4.12496, y: 0.27025652, z: 0}
+  - {x: 5.064764, y: -0.3500154, z: 0}
+  - {x: 5.6540775, y: -0.22656155, z: 0}
+  - {x: 6.0812817, y: -0.59949446, z: 0}
+  - {x: 5.822384, y: -0.82807326, z: 0}
+  - {x: -4.4594173, y: -0.72551084, z: 0}
+  - {x: -4.3696766, y: -0.32808447, z: 0}
+  - {x: -5.0491486, y: -0.39218545, z: 0}
+  m_ShapePathHash: 914732867
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 31950
+  m_LocalBounds:
+    m_Center: {x: 0.07692242, y: 0.01806128, z: 0}
+    m_Extent: {x: 6.0043592, y: 0.84613454, z: 0}
