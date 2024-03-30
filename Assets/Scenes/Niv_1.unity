@@ -3579,8 +3579,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -4.493, y: -2.3508997, z: 0}
-    m_Extent: {x: 45.7867, y: 6.7548, z: 0}
+    m_Center: {x: -4.494301, y: -2.3423, z: 0}
+    m_Extent: {x: 45.7967, y: 6.753, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5370,8 +5370,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -8.1671505, y: -3.8045998, z: 0}
-    m_Extent: {x: 41.43445, y: 9.6586, z: 0}
+    m_Center: {x: -8.1629505, y: -3.8082001, z: 0}
+    m_Extent: {x: 41.43965, y: 9.6478, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -6077,6 +6077,7 @@ GameObject:
   - component: {fileID: 1406816344}
   - component: {fileID: 1406816343}
   - component: {fileID: 1406816342}
+  - component: {fileID: 1406816348}
   m_Layer: 0
   m_Name: Ennemie
   m_TagString: Untagged
@@ -6100,6 +6101,9 @@ MonoBehaviour:
   Waypoint:
   - {fileID: 168754811}
   - {fileID: 528221344}
+  Graph: {fileID: 1406816346}
+  triggHit: {fileID: 1406816348}
+  canHit: 0
 --- !u!114 &1406816343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6260,6 +6264,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 309136292}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1406816348
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406816341}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.553112, y: -0.018314958}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.8608093, y: 2.0366297}
+  m_EdgeRadius: 0
 --- !u!1 &1417880401
 GameObject:
   m_ObjectHideFlags: 0
@@ -9816,8 +9865,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -6.6452007, y: -0.9977002, z: 0}
-    m_Extent: {x: 40.8637, y: 8.4758, z: 0}
+    m_Center: {x: -6.6461506, y: -0.9986, z: 0}
+    m_Extent: {x: 40.87005, y: 8.4774, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
