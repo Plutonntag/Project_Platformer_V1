@@ -56,8 +56,10 @@ public class Move_ennemie : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Voit");
             canHit = true;
             StartCoroutine(Hit());
+        
 
         }
     }
@@ -66,8 +68,9 @@ public class Move_ennemie : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            canHit = false;
-            StopCoroutine(Hit());
+            Debug.Log("voit plus");
+            StopAllCoroutines();
+            StartCoroutine(TheWait());
 
         }
     }
@@ -79,8 +82,15 @@ public class Move_ennemie : MonoBehaviour
         {
             yield return new WaitForSeconds(2);
             Debug.Log("Hit");
+
         }
 
     }
-    
+
+    IEnumerator TheWait()
+    {
+        yield return new WaitForSeconds(2);
+        canHit = false;
+    }
+
 }
