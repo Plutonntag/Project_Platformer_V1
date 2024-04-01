@@ -3639,8 +3639,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -4.50115, y: -2.34475, z: 0}
-    m_Extent: {x: 45.790947, y: 6.75635, z: 0}
+    m_Center: {x: -4.498001, y: -2.3436, z: 0}
+    m_Extent: {x: 45.7878, y: 6.7521, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4469,6 +4469,8 @@ GameObject:
   - component: {fileID: 893713617}
   - component: {fileID: 893713618}
   - component: {fileID: 893713619}
+  - component: {fileID: 893713621}
+  - component: {fileID: 893713620}
   m_Layer: 6
   m_Name: character
   m_TagString: Player
@@ -4714,6 +4716,64 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 1, z: 0}
+--- !u!61 &893713620
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893713611}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.6343727, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.2687454, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &893713621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893713611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d80496161ec69e4a8c787a807659649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ennemie: {fileID: 1406816341}
 --- !u!1 &919503845
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,8 +5490,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -8.1674, y: -3.8083003, z: 0}
-    m_Extent: {x: 41.4437, y: 9.6499, z: 0}
+    m_Center: {x: -8.159248, y: -3.8113, z: 0}
+    m_Extent: {x: 41.44355, y: 9.6516, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -6138,7 +6198,7 @@ GameObject:
   - component: {fileID: 1406816343}
   - component: {fileID: 1406816342}
   - component: {fileID: 1406816348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ennemie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9925,8 +9985,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -6.6496487, y: -0.9957998, z: 0}
-    m_Extent: {x: 40.86445, y: 8.4668, z: 0}
+    m_Center: {x: -6.64555, y: -0.99965, z: 0}
+    m_Extent: {x: 40.85615, y: 8.47575, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10119,6 +10179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537097202265659383, guid: 4dad7b33201f5824bb6e2b9d772a16f0,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8959619950903966032, guid: 4dad7b33201f5824bb6e2b9d772a16f0,
         type: 3}

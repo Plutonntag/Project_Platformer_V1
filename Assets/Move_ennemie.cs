@@ -12,7 +12,7 @@ public class Move_ennemie : MonoBehaviour
 
     private Transform target;
     private int desPoint = 0;
-    [SerializeField] bool canHit;
+    public bool canHit;
     IEnumerator coroutine;
 
     // Start is called before the first frame update
@@ -50,47 +50,6 @@ public class Move_ennemie : MonoBehaviour
         }
 
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("Voit");
-            canHit = true;
-            StartCoroutine(Hit());
-        
-
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("voit plus");
-            StopAllCoroutines();
-            StartCoroutine(TheWait());
-
-        }
-    }
-
-
-    IEnumerator Hit()
-    {
-        while (canHit)
-        {
-            yield return new WaitForSeconds(2);
-            Debug.Log("Hit");
-
-        }
-
-    }
-
-    IEnumerator TheWait()
-    {
-        yield return new WaitForSeconds(2);
-        canHit = false;
     }
 
 }
