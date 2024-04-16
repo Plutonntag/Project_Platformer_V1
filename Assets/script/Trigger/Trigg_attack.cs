@@ -5,6 +5,7 @@ using UnityEngine;
 public class Trigg_attack : MonoBehaviour
 {
     public Move_ennemie hit;
+    public bool istrigg;
     IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class Trigg_attack : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Voit");
+            istrigg = true;
             hit.canHit = true;
             StartCoroutine(Hit());
             
@@ -37,6 +39,7 @@ public class Trigg_attack : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("voit plus");
+            istrigg = false;
             StopAllCoroutines();
             StartCoroutine(TheWait());
 

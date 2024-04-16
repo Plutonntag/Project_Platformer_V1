@@ -30,7 +30,7 @@ public class hide_bush : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Hidden") || (collision.CompareTag("Player")))
+        if  (collision.CompareTag("Player"))
         {
             Player.layer = LayerMask.NameToLayer("Player");
 

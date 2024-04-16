@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Move_ennemie : MonoBehaviour
 {
-    [SerializeField] float Speed;
+    public float Speed;
     [SerializeField] Transform[] Waypoint;
     [SerializeField] SpriteRenderer Graph;
     [SerializeField] BoxCollider2D triggHit;

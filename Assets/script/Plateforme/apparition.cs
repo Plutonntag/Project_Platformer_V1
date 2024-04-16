@@ -21,6 +21,7 @@ public class apparition : MonoBehaviour
     [SerializeField] BoxCollider2D touch;
     [SerializeField] BoxCollider2D touch_trigger;
     [SerializeField] int powar_plat = 5;
+    [SerializeField] SpriteRenderer SP_Player;
     private float XPlayer;
     private float YPlayer;
     private bool TimeOff;
@@ -112,6 +113,7 @@ public class apparition : MonoBehaviour
         plat_rb.gravityScale = originalGravity;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeAll;
         chara.plat_absorb = false;
+        SP_Player.color = Color.red;
 
     }
 
@@ -136,6 +138,7 @@ public class apparition : MonoBehaviour
         plat_rb.gravityScale = originalGravity;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeAll;
         chara.plat_absorb = false;
+        SP_Player.color = Color.red;
     }
 
 

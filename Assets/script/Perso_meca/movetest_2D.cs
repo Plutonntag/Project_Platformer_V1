@@ -17,10 +17,12 @@ public class movetest : MonoBehaviour
     [SerializeField] float groundCheckRadius;
     [SerializeField] LayerMask collisionPlayer;
     [SerializeField] SpriteRenderer sprite;
+    [SerializeField] BoxCollider2D Box_attack_chara;
     private bool isplaned;
     [SerializeField] bool Grounded;
     public bool plat_absorb;
-
+    private float XTrigg;
+    
 
     IEnumerator coroutine;
 
@@ -28,6 +30,8 @@ public class movetest : MonoBehaviour
     {
         
         rb = GetComponent<Rigidbody2D>();
+        XTrigg = Box_attack_chara.offset.x;
+
 
     }
 
@@ -44,6 +48,7 @@ public class movetest : MonoBehaviour
         {
             StopAllCoroutines();
             isplaned = false;
+         
             //Debug.Log("Stop");
         }
 
@@ -71,6 +76,7 @@ public class movetest : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow)) // Mouvement droite
         {
             sprite.flipX = false;
+            Box_attack_chara.offset = new Vector3(XTrigg,0, 0);
             transform.Translate(Vector3.right * Movespeed * Time.deltaTime);
             
 
@@ -78,6 +84,7 @@ public class movetest : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftArrow)) // Mouvement gauche
         {
             sprite.flipX = true;
+            Box_attack_chara.offset = new Vector3(-XTrigg,0, 0);
             transform.Translate(Vector3.left * Movespeed * Time.deltaTime);
 
         }
@@ -89,7 +96,7 @@ public class movetest : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && Grounded == true) // Si relaché avant le décompte, un petit saut
         {
             //Debug.Log(" petit saut");
-            rb.AddForce( Vector2.up * jumpHeight * 10 ) ;
+            rb.AddForce( Vector3.up * jumpHeight * 10 ) ;
             StartCoroutine(Time_jumped());
 
            

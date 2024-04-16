@@ -31,10 +31,13 @@ public class Enter_Salle : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && first_pass == true)
+        if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
+
+            Ball.velocity = Vector3.zero;
+            G_Ball.transform.position = new Vector3(Xball, Yball, 0);
 
             Ball.constraints = RigidbodyConstraints2D.None;
             Ball.gravityScale = 5f;
@@ -45,18 +48,18 @@ public class Enter_Salle : MonoBehaviour
 
         }
 
-        else if (collision.CompareTag("Player") && deux_pass == true)
-        {
+        //else if (collision.CompareTag("Player") && deux_pass == true)
+        //{
 
-            //Ball.transform.TransformDirection(Xball,Yball, 0);
-            G_Ball.transform.position = new Vector3(Xball, Yball, 0);
+        //    //Ball.transform.TransformDirection(Xball,Yball, 0);
+        //    G_Ball.transform.position = new Vector3(Xball, Yball, 0);
 
-            Ball.constraints = RigidbodyConstraints2D.FreezeAll;
-            Ball.gravityScale = 0;
-            first_pass = true;
-            deux_pass = false;
+        //    Ball.constraints = RigidbodyConstraints2D.FreezeAll;
+        //    Ball.gravityScale = 0;
+        //    first_pass = true;
+        //    deux_pass = false;
 
-        }
+        //}
     }
 
 }

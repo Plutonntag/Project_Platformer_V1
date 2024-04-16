@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 3353226781765575832}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3e0bed04ed73d9b4f8fc9f87cb1bf877, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   - {x: -5.0491486, y: -0.39218545, z: 0}
   m_ShapePathHash: 914732867
   m_Mesh: {fileID: 0}
-  m_InstanceId: 31950
+  m_InstanceId: 71322
   m_LocalBounds:
     m_Center: {x: 0.07692242, y: 0.01806128, z: 0}
     m_Extent: {x: 6.0043592, y: 0.84613454, z: 0}
