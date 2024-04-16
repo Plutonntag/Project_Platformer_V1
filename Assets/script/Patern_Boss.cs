@@ -16,6 +16,9 @@ public class Patern_Boss : MonoBehaviour
     private bool Time_Front_Attack;
     [SerializeField] float Speed = 30;
     private bool Ctime;
+    [SerializeField] Transform[] Attack1;
+    [SerializeField] Transform[] Attack2;
+    [SerializeField] Transform[] Attack3;
 
     IEnumerator coroutine;
     // Start is called before the first frame update
@@ -97,6 +100,19 @@ public class Patern_Boss : MonoBehaviour
          
          transform.Translate(Vector3.left * Speed * Time.deltaTime);
 
+    }
+
+    private void VerticalAttack(Transform[] Waypoint)
+    {
+        if (!Ctime)
+        {
+            Ctime = true;
+            StartCoroutine(coroutine_Front_Attack());
+        }
+
+        transform.position = Attack1.position;
+        transform.Translate(Vector3.down * Speed * Time.deltaTime);
+    
     }
 
     IEnumerator Cooldown_attack()
