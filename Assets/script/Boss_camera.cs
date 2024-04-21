@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class Boss_camera : MonoBehaviour
 {
-    public Patern_Boss Boss;
+    public Pattern_Boss Boss;
     [SerializeField] CinemachineVirtualCamera Cam_Main;
     [SerializeField] CinemachineVirtualCamera Cam_Boss;
     // Start is called before the first frame update
