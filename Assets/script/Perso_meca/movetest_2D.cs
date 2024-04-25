@@ -42,36 +42,14 @@ public class movetest : MonoBehaviour
 
     private void Jump()
     {
-        Grounded = Physics2D.OverlapCircle(check.position, groundCheckRadius, collisionPlayer);
+         Grounded = Physics2D.OverlapCircle(check.position, groundCheckRadius, collisionPlayer);
         if (Grounded == true)
         {
             StopAllCoroutines();
             isplaned = false;
-
+         
             //Debug.Log("Stop");
         }
-        if (Input.GetKey(KeyCode.Space) && Grounded == true) // Si relaché avant le décompte, un petit saut
-        {
-                //Debug.Log(" petit saut");
-                rb.AddForce(Vector3.up * jumpHeight * 30 ) ;
-                //rb.velocity = (Vector3.up * jumpHeight);
-                StartCoroutine(Time_jumped());
-
-
-        }
-
-
-        if (Input.GetKey(KeyCode.Space) && isplaned == true) // Si relaché avant le décompte, un petit saut
-        {
-                //Debug.Log(" plane");
-                rb.velocity = Vector3.zero;
-                rb.gravityScale = 7;
-        }
-        else
-        {
-                rb.gravityScale = 9.8f;
-        }
-        
 
         
     }
@@ -84,8 +62,8 @@ public class movetest : MonoBehaviour
 
     void Update() // Fonction Update appelle la fonction Movement
     {
-
-        
+       
+       
 
     }
 
@@ -111,6 +89,30 @@ public class movetest : MonoBehaviour
         }
 
 //                                  MECANIQUE DE SAUT
+
+
+
+        if (Input.GetKey(KeyCode.Space) && Grounded == true) // Si relaché avant le décompte, un petit saut
+        {
+            //Debug.Log(" petit saut");
+            rb.AddForce( Vector3.up * jumpHeight * 10 ) ;
+            StartCoroutine(Time_jumped());
+
+           
+        }
+
+
+        if (Input.GetKey(KeyCode.Space) && isplaned == true) // Si relaché avant le décompte, un petit saut
+        {
+            //Debug.Log(" plane");
+            rb.velocity = Vector3.zero;
+            rb.gravityScale =  7;
+        }
+        else
+        {
+            rb.gravityScale = 9.8f; 
+        }
+
 
 
     }
