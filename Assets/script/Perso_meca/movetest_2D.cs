@@ -38,6 +38,7 @@ public class movetest : MonoBehaviour
     {
         Movement();
         Jump();
+       
     }
 
     private void Jump()
@@ -66,7 +67,6 @@ public class movetest : MonoBehaviour
        
 
     }
-
 
     private void Movement() /* Cette fonction permet de faire déplacer le personnage ainsi que de faire jouer ses animation
                             */

@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "Jump",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "8dafffc8-edd4-44a3-85bc-99bf0c22a426",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -16,17 +16,26 @@
                 },
                 {
                     "name": "Movement",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "e2d1c577-e578-49e0-9ca1-f62f27a7298e",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Throw",
                     "type": "Button",
                     "id": "32a43646-05bf-4167-b809-98ebd2981668",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReFIRE",
+                    "type": "Button",
+                    "id": "3c00cbf9-e619-4ecf-8225-46121d84120d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -88,9 +97,26 @@
                     "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a53188a-5d27-4363-aaf1-aae7ce1f91f4",
+                    "path": "<Touchscreen>/touch0/indirectTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme",
+                    "action": "ReFIRE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "New control scheme",
+            "bindingGroup": "New control scheme",
+            "devices": []
+        }
+    ]
 }
