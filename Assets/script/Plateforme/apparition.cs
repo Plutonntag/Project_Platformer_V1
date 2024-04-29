@@ -100,14 +100,14 @@ public class apparition : MonoBehaviour
         
         if (sprite.flipX == true)
         {
-            plat_rb.AddForce(Vector2.left * 180 * powar_plat);
+            plat_rb.AddForce(Vector2.left * 120 * powar_plat);
         }
         else
         {
-            plat_rb.AddForce(Vector2.right * 180 * powar_plat);
+            plat_rb.AddForce(Vector2.right * 120 * powar_plat);
         }
         touch.enabled = true;
-        yield return new WaitForSeconds(0.3f) ; // Temps de la distance parcouru par la plateforme
+        yield return new WaitForSeconds(0.12f) ; // Temps de la distance parcouru par la plateforme
         //touch.enabled = true;
         touch_trigger.enabled = true;
         plat_rb.gravityScale = originalGravity;
