@@ -17,7 +17,7 @@ public class movetest : MonoBehaviour
     [SerializeField] LayerMask collisionPlayer;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] BoxCollider2D Box_attack_chara;
-    private bool isplaned;
+    public bool isplaned;
     [SerializeField] bool Grounded;
     public bool plat_absorb;
     private float XTrigg;
@@ -37,10 +37,10 @@ public class movetest : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-        Jump();
+        groundJump();
     }
 
-    private void Jump()
+    private void groundJump()
     {
          Grounded = Physics2D.OverlapCircle(check.position, groundCheckRadius, collisionPlayer);
         if (Grounded == true)
@@ -71,55 +71,75 @@ public class movetest : MonoBehaviour
     private void Movement() /* Cette fonction permet de faire déplacer le personnage ainsi que de faire jouer ses animation
                             */
     {
+        float moveInput = Input.GetAxis("Horizontal");
+        Vector2 moveVelocity = new Vector2(moveInput * Movespeed, rb.velocity.y);
+
+        rb.velocity = moveVelocity;
+ 
 
         if (Input.GetKey(KeyCode.RightArrow)) // Mouvement droite
         {
             sprite.flipX = false;
-            Box_attack_chara.offset = new Vector3(XTrigg,0, 0);
-            transform.Translate(Vector3.right * Movespeed * Time.deltaTime);
-            
+            Box_attack_chara.offset = new Vector3(XTrigg, 0, 0);
+            //transform.Translate(Vector3.right * Movespeed * Time.deltaTime);
+            //rb.velocity = new Vector2(1 * Movespeed, 0);
+            //rb.velocity =  Vector3.right * Movespeed;
+            //rb.AddForce(Vector3.right * Movespeed * 5);
+            //Vector3 velocity = Vector3.left * Movespeed;
+
 
         }
         else if (Input.GetKey(KeyCode.LeftArrow)) // Mouvement gauche
         {
             sprite.flipX = true;
-            Box_attack_chara.offset = new Vector3(-XTrigg,0, 0);
-            transform.Translate(Vector3.left * Movespeed * Time.deltaTime);
+            Box_attack_chara.offset = new Vector3(-XTrigg, 0, 0);
+            //transform.Translate(Vector3.left * Movespeed * Time.deltaTime);
+            //rb.velocity = new Vector2(1 * -Movespeed, 0);
+        
+            //rb.AddForce(Vector3.left * Movespeed * 5);
 
         }
+        else if ((Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow)) && Grounded == true)
+        {
+           rb.velocity = Vector3.zero;
+        }
 
-//                                  MECANIQUE DE SAUT
+        //                                  MECANIQUE DE SAUT
 
 
 
         if (Input.GetKey(KeyCode.Space) && Grounded == true) // Si relaché avant le décompte, un petit saut
         {
             //Debug.Log(" petit saut");
-            rb.AddForce( Vector3.up * jumpHeight * 10 ) ;
+            rb.AddForce(Vector2.up * jumpHeight * 10);
             StartCoroutine(Time_jumped());
 
-           
+
         }
 
 
         if (Input.GetKey(KeyCode.Space) && isplaned == true) // Si relaché avant le décompte, un petit saut
         {
             //Debug.Log(" plane");
-            rb.velocity = Vector3.zero;
-            rb.gravityScale =  7;
+
+            rb.gravityScale = 0.9f;
+
+            
+            
         }
         else
         {
-            rb.gravityScale = 9.8f; 
+            rb.gravityScale = 9.8f;
         }
-
 
 
     }
 
+
     IEnumerator Time_jumped()
     {
         yield return new WaitForSeconds(0.2f);
+        rb.velocity = Vector2.zero;
         isplaned = true;
 
     }
