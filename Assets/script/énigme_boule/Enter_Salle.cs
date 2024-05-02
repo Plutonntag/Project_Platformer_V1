@@ -7,8 +7,7 @@ public class Enter_Salle : MonoBehaviour
 
     [SerializeField] Rigidbody2D Ball;
     [SerializeField] GameObject G_Ball;
-    [SerializeField] bool first_pass;
-    [SerializeField] bool deux_pass;
+    [SerializeField] Canvas canva;
     public float Xball;
     public float Yball;
 
@@ -19,8 +18,8 @@ public class Enter_Salle : MonoBehaviour
         Xball = Ball.transform.position.x;
         Yball = Ball.transform.position.y;
         Debug.Log("Commence");
-        first_pass = true;
-        deux_pass = false;
+        canva.enabled = false;
+
     }
 
 
@@ -33,19 +32,25 @@ public class Enter_Salle : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E))
+        if (collision.CompareTag("Player"))
         {
+            canva.enabled = true;
 
-            Ball.velocity = Vector3.zero;
-            G_Ball.transform.position = new Vector3(Xball, Yball, 0);
+            if (Input.GetKey(KeyCode.E))
+            {
 
-            Ball.constraints = RigidbodyConstraints2D.None;
-            Ball.gravityScale = 5f;
-            Debug.Log(" La boule tombe");
-            deux_pass = true;
-            first_pass = false;
+                Ball.velocity = Vector3.zero;
+                G_Ball.transform.position = new Vector3(Xball, Yball, 0);
 
+                Ball.constraints = RigidbodyConstraints2D.None;
+                Ball.gravityScale = 5f;
+                Debug.Log(" La boule tombe");
 
+            }
+        }
+        else
+        {
+            canva.enabled = false;
         }
 
         //else if (collision.CompareTag("Player") && deux_pass == true)

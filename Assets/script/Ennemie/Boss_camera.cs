@@ -22,9 +22,12 @@ public class Boss_camera : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Boss.enabled = true;
-        Cam_Boss.Priority = 10;
-        Cam_Main.Priority = 1;
+        if (collision.CompareTag("Player"))
+        {         
+            Boss.enabled = true;
+            Cam_Boss.Priority = 10;
+            Cam_Main.Priority = 1;
+        }   
     }
 }
 
