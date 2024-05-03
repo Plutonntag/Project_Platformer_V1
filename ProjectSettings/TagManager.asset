@@ -11,7 +11,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - SFX
   - Water
   - UI
   - Player
@@ -43,4 +43,31 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TransparentFX
+    uniqueID: 1397521359
+    locked: 0
+  - name: Ignore Raycast
+    uniqueID: 2507569095
+    locked: 0
+  - name: SFX
+    uniqueID: 1838450609
+    locked: 0
+  - name: Water
+    uniqueID: 1550167957
+    locked: 0
+  - name: UI
+    uniqueID: 2705923055
+    locked: 0
+  - name: Player
+    uniqueID: 183654753
+    locked: 0
+  - name: Trigger
+    uniqueID: 3047641171
+    locked: 0
+  - name: Hidden
+    uniqueID: 1409166003
+    locked: 0
+  - name: Ennemie
+    uniqueID: 2513645695
     locked: 0

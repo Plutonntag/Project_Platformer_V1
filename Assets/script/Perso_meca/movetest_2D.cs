@@ -42,9 +42,9 @@ public class movetest : MonoBehaviour
 
     private void groundJump()
     {
-         Grounded = Physics2D.OverlapCircle(check.position, groundCheckRadius, collisionPlayer);
-        if (Grounded == true)
-        {
+        Grounded = Physics2D.OverlapCircle(check.position, groundCheckRadius, collisionPlayer);
+        if (Grounded == true) { 
+
             StopAllCoroutines();
             isplaned = false;
          
@@ -112,6 +112,11 @@ public class movetest : MonoBehaviour
         {
             //Debug.Log(" petit saut");
             rb.AddForce(Vector2.up * jumpHeight * 10);
+            if (rb.velocity.magnitude > 15)
+            {
+                rb.velocity = Vector2.zero;
+            };
+            //Debug.Log(rb.velocity);
             StartCoroutine(Time_jumped());
 
 
@@ -139,8 +144,10 @@ public class movetest : MonoBehaviour
     IEnumerator Time_jumped()
     {
         yield return new WaitForSeconds(0.2f);
+        Grounded = false;
         rb.velocity = Vector2.zero;
         isplaned = true;
+        Debug.Log("Stop");
 
     }
 
