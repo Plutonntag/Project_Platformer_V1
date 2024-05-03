@@ -7,6 +7,7 @@ public class travers_script : MonoBehaviour
     [SerializeField] BoxCollider2D Box_plat;
     [SerializeField] Rigidbody2D rb_Player;
     [SerializeField] LayerMask player;
+    [SerializeField] LayerMask hidden;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,7 @@ public class travers_script : MonoBehaviour
             Debug.Log("traverse");
 
             Box_plat.excludeLayers = player;
+            Box_plat.excludeLayers = hidden;
 
 
 
