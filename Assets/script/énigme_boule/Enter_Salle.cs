@@ -26,7 +26,7 @@ public class Enter_Salle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        canva.enabled = false;
     }
 
 
@@ -48,10 +48,7 @@ public class Enter_Salle : MonoBehaviour
 
             }
         }
-        else
-        {
-            canva.enabled = false;
-        }
+
 
         //else if (collision.CompareTag("Player") && deux_pass == true)
         //{
