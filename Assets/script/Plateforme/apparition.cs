@@ -16,7 +16,6 @@ public class apparition : MonoBehaviour
     public movetest chara;
     [SerializeField] Rigidbody2D plat_rb;
     [SerializeField] GameObject Player;
-    [SerializeField] SpriteRenderer sprite;
     [SerializeField] SpriteRenderer image;
     [SerializeField] BoxCollider2D touch;
     [SerializeField] BoxCollider2D touch_trigger;
@@ -79,7 +78,7 @@ public class apparition : MonoBehaviour
     {
 
         Debug.Log(" rejet");
-        if (sprite.flipX == true)
+        if (SP_Player.flipX == true)
         {
             transform.position = new Vector3(XPlayer - 2, YPlayer, 0f);
         }
@@ -98,7 +97,7 @@ public class apparition : MonoBehaviour
         plat_rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         
-        if (sprite.flipX == true)
+        if (SP_Player.flipX == true)
         {
             plat_rb.AddForce(Vector2.left * 120 * powar_plat);
         }

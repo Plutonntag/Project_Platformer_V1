@@ -23,7 +23,7 @@ public class travers_script : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Player")){
+        if (collision.CompareTag("Player") || collision.CompareTag("Hidden")){
             Debug.Log("Sortie");
             Box_plat.excludeLayers = new LayerMask();
         }
@@ -32,13 +32,14 @@ public class travers_script : MonoBehaviour
     private void Travers_Fonction()
     {
         //Debug.Log("Peut traverser");
-        if (rb_Player.IsTouching(Box_plat) && Input.GetKey(KeyCode.G))
+        if (rb_Player.IsTouching(Box_plat) && Input.GetKey(KeyCode.DownArrow))
         {
 
             Debug.Log("traverse");
 
-            Box_plat.excludeLayers = player;
-            Box_plat.excludeLayers = hidden;
+            Box_plat.excludeLayers = player + hidden;
+            //Box_plat.excludeLayers = hidden;
+            //Physics2D.IgnoreLayerCollision(6, 8);
 
 
 

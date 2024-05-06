@@ -9,6 +9,7 @@ public class touch_ball : MonoBehaviour
     [SerializeField] BoxCollider2D Soluc;
     [SerializeField] GameObject Plateforme;
     [SerializeField] GameObject checker;
+    [SerializeField] GameObject Ball;
     private bool One;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class touch_ball : MonoBehaviour
         {
             One = true;
             Plateforme.transform.position = (checker.transform.position);
+            Ball.SetActive(false);
 
         
         }
