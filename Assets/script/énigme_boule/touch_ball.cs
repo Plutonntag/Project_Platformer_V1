@@ -7,8 +7,6 @@ public class touch_ball : MonoBehaviour
 
     [SerializeField] CircleCollider2D G_Ball;
     [SerializeField] BoxCollider2D Soluc;
-    [SerializeField] GameObject Plateforme;
-    [SerializeField] GameObject checker;
     [SerializeField] GameObject Ball;
     private bool One;
     // Start is called before the first frame update
@@ -28,7 +26,6 @@ public class touch_ball : MonoBehaviour
         if (Soluc.IsTouching(G_Ball) && One == false)
         {
             One = true;
-            Plateforme.transform.position = (checker.transform.position);
             Ball.SetActive(false);
 
         
