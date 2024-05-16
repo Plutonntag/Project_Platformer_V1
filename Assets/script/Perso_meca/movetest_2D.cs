@@ -17,6 +17,13 @@ public class movetest : MonoBehaviour
     [SerializeField] LayerMask collisionPlayer;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] BoxCollider2D Box_attack_chara;
+
+
+    [SerializeField] Animator Player_idle;
+    [SerializeField] Animator Player_walk;
+    [SerializeField] Animator Player_walk_plat;
+    [SerializeField] Animator Player_idle_plat;
+
     public bool isplaned;
     [SerializeField] bool Grounded;
     public bool plat_absorb;
@@ -75,10 +82,41 @@ public class movetest : MonoBehaviour
         Vector2 moveVelocity = new Vector2(moveInput * Movespeed, rb.velocity.y);
 
         rb.velocity = moveVelocity;
+        if (plat_absorb == false)
+        {
+            Player_walk.SetBool("Marche", false);
+            Player_idle_plat.SetBool("Idle_plat", false);
+            Player_walk_plat.SetBool("Marche_plat", false);
+            Player_idle.SetBool("Idle", true);
+        }
+        else
+        {
+            Player_walk.SetBool("Marche", false);
+            Player_walk_plat.SetBool("Marche_plat", false);
+            Player_idle.SetBool("Idle", false);
+            Player_idle_plat.SetBool("Idle_plat", true);
+            
+        }
+        
  
 
         if (Input.GetKey(KeyCode.RightArrow)) // Mouvement droite
         {
+            if (plat_absorb == false)
+            {
+                Player_idle_plat.SetBool("Idle_plat", false);
+                Player_walk_plat.SetBool("Marche_plat", false);
+                Player_idle.SetBool("Idle", false);
+                Player_walk.SetBool("Marche", true);
+            }
+            else
+            {
+                Player_idle_plat.SetBool("Idle_plat", false);
+                Player_walk_plat.SetBool("Marche", false);
+                Player_idle.SetBool("Idle", false);
+                Player_walk.SetBool("Marche_plat", true);
+            }
+
             sprite.flipX = false;
             Box_attack_chara.offset = new Vector3(XTrigg, 0, 0);
             //transform.Translate(Vector3.right * Movespeed * Time.deltaTime);
@@ -91,6 +129,20 @@ public class movetest : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.LeftArrow)) // Mouvement gauche
         {
+            if (plat_absorb == false)
+            {
+                Player_idle_plat.SetBool("Idle_plat", false);
+                Player_walk_plat.SetBool("Marche_plat", false);
+                Player_idle.SetBool("Idle", false);
+                Player_walk.SetBool("Marche", true);
+            }
+            else
+            {
+                Player_idle_plat.SetBool("Idle_plat", false);
+                Player_walk_plat.SetBool("Marche", false);
+                Player_idle.SetBool("Idle", false);
+                Player_walk.SetBool("Marche_plat", true);
+            }
             sprite.flipX = true;
             Box_attack_chara.offset = new Vector3(-XTrigg, 0, 0);
             //transform.Translate(Vector3.left * Movespeed * Time.deltaTime);

@@ -112,7 +112,6 @@ public class apparition : MonoBehaviour
         plat_rb.gravityScale = originalGravity;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeAll;
         chara.plat_absorb = false;
-        SP_Player.color = Color.red;
 
     }
 
@@ -137,7 +136,6 @@ public class apparition : MonoBehaviour
         plat_rb.gravityScale = originalGravity;
         plat_rb.constraints = RigidbodyConstraints2D.FreezeAll;
         chara.plat_absorb = false;
-        SP_Player.color = Color.red;
     }
 
 

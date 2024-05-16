@@ -9,7 +9,6 @@ public class disparition : MonoBehaviour
     [SerializeField] SpriteRenderer image;
     [SerializeField] BoxCollider2D touch_trigger;
     [SerializeField] BoxCollider2D touch;
-    [SerializeField] SpriteRenderer SP_Player;
     public bool absorbed = false;
 
     void Start()
@@ -44,7 +43,6 @@ public class disparition : MonoBehaviour
                 touch.enabled = false;
                 touch_trigger.enabled = false;
                 Chara.plat_absorb = true;
-                SP_Player.color = Color.blue;
 
 
             }
