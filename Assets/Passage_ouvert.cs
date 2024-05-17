@@ -34,8 +34,10 @@ public class Passage_ouvert : MonoBehaviour
 
     IEnumerator Porte_baisse()
     {
+        Cam_Perso.Priority = 11;
         Cam_Perso.Follow = Porte.transform;
         yield return new WaitForSeconds(2);
+        Cam_Perso.Priority = 10;
         Cam_Perso.Follow = Personnage.transform;
         Porte.SetActive(false);
 
