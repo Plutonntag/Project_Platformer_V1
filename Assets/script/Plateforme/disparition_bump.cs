@@ -35,7 +35,7 @@ public class disparition_bump : MonoBehaviour
 
 
 
-            if (Input.GetKey(KeyCode.F) && absorbed == false)
+            if (Input.GetKey(KeyCode.J) && absorbed == false)
             {
 
                 Debug.Log("absorption");

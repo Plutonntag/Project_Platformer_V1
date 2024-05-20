@@ -32,7 +32,7 @@ public class travers_script : MonoBehaviour
     private void Travers_Fonction()
     {
         //Debug.Log("Peut traverser");
-        if (rb_Player.IsTouching(Box_plat) && Input.GetKey(KeyCode.DownArrow))
+        if (rb_Player.IsTouching(Box_plat) && Input.GetKey(KeyCode.S))
         {
 
             Debug.Log("traverse");

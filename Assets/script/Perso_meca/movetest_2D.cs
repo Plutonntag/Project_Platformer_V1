@@ -100,7 +100,7 @@ public class movetest : MonoBehaviour
         
  
 
-        if (Input.GetKey(KeyCode.RightArrow)) // Mouvement droite
+        if (Input.GetKey(KeyCode.D)) // Mouvement droite
         {
             if (plat_absorb == false)
             {
@@ -127,7 +127,7 @@ public class movetest : MonoBehaviour
 
 
         }
-        else if (Input.GetKey(KeyCode.LeftArrow)) // Mouvement gauche
+        else if (Input.GetKey(KeyCode.A)) // Mouvement gauche
         {
             if (plat_absorb == false)
             {
@@ -151,7 +151,7 @@ public class movetest : MonoBehaviour
             //rb.AddForce(Vector3.left * Movespeed * 5);
 
         }
-        else if ((Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow)) && Grounded == true)
+        else if ((Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.Q)) && Grounded == true)
         {
            rb.velocity = Vector3.zero;
         }

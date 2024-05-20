@@ -45,13 +45,13 @@ public class apparition : MonoBehaviour
                 StartCoroutine(Thewait()); // Coroutine pour le cooldown de la réapparition
 
             }
-            else if ((Input.GetKey(KeyCode.F)) && (TimeOff == true))// si activer la touche et le cooldown terminé, le code ce lance
+            else if ((Input.GetKey(KeyCode.J)) && (TimeOff == true))// si activer la touche et le cooldown terminé, le code ce lance
             {
 
                 StartCoroutine(TheFly());
 
             }
-            else if ((Input.GetKey(KeyCode.C)) && (TimeOff == true))
+            else if ((Input.GetKey(KeyCode.N)) && (TimeOff == true))
             {
                 StartCoroutine(ThePlat());
             }
