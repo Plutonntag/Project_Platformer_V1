@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class death_pic : MonoBehaviour
 {
-    private GameObject Player;
-    private Transform CheckPawn;
+
     // Start is called before the first frame update
     void Start()
     {
-        CheckPawn = GameObject.FindWithTag("Spawn").transform;
-        Player = GameObject.FindWithTag("Player");
 
     }
 
@@ -18,7 +15,7 @@ public class death_pic : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Player.transform.position = CheckPawn.position;
+            Death_Effect.instance.Death_Player();
         }
     }
 }

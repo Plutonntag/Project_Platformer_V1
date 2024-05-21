@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Trigger_dead_Plat : MonoBehaviour
 {
-    [SerializeField] GameObject checker;
     [SerializeField] GameObject Player;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,6 @@ public class Trigger_dead_Plat : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Player.transform.position = checker.transform.position;
         }
     }
 }

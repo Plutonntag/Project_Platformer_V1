@@ -7,11 +7,9 @@ public class S_cam_Enigme : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera Cam_Main;
     [SerializeField] CinemachineVirtualCamera Cam_enigme_1;
-    private bool AlEnter;
     // Start is called before the first frame update
     void Start()
     {
-        AlEnter = false;
     }
 
     // Update is called once per frame
@@ -21,17 +19,15 @@ public class S_cam_Enigme : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && AlEnter == false)
+        if (collision.CompareTag("Player") && Cam_Main.Priority == 10)
         {
             Cam_enigme_1.Priority = 10;
             Cam_Main.Priority = 1;
-            AlEnter = true;
         }
-        else if (collision.CompareTag("Player") && AlEnter == true)
+        else if (collision.CompareTag("Player") && Cam_enigme_1.Priority == 10)
         {
             Cam_enigme_1.Priority = 1;
             Cam_Main.Priority = 10;
-            AlEnter = false;
 
         }
     }

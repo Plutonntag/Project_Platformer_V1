@@ -199,7 +199,7 @@ public class movetest : MonoBehaviour
         Grounded = false;
         rb.velocity = Vector2.zero;
         isplaned = true;
-        Debug.Log("Stop");
+        //Debug.Log("Stop");
 
     }
 
