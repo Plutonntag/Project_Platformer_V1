@@ -41,7 +41,6 @@ public class Attack_Leave : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E) && HaveTrigg.istrigg == false)
             {
-                Debug.Log("hit");
                 ennemie.GetComponent<Rigidbody2D>().velocity = Vector3.right * 10;
                 ennemie.GetComponent<Rigidbody2D>().velocity = Vector3.up * 10;
                 ennemie.GetComponent<CapsuleCollider2D>().enabled = false;

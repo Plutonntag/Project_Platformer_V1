@@ -198,6 +198,10 @@ public class Pattern_Boss : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Death_Effect.instance.Death_Player();
+    }
 
 
 }

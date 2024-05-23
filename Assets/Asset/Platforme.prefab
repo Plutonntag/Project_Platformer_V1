@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d88b09d1bdf0d3a46812ba43f1ce8ce1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -174,12 +174,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53516f5140e4f04080198fe0ce6c218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb_player: {fileID: 0}
-  Chara: {fileID: 0}
+  rb_player: {fileID: 6598487051192511357, guid: 600acf0824f4171429310fc496a86d30,
+    type: 3}
+  Chara: {fileID: 8698753859056954624, guid: 600acf0824f4171429310fc496a86d30, type: 3}
   image: {fileID: 2368433346701175562}
   touch_trigger: {fileID: 8856244880180847648}
   touch: {fileID: 4268452240746494448}
-  SP_Player: {fileID: 0}
   absorbed: 0
 --- !u!114 &6202717859328270542
 MonoBehaviour:
@@ -194,15 +194,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script: {fileID: 199596211109304227}
-  chara: {fileID: 0}
+  chara: {fileID: 8698753859056954624, guid: 600acf0824f4171429310fc496a86d30, type: 3}
   plat_rb: {fileID: 5479444049298689956}
-  Player: {fileID: 0}
-  sprite: {fileID: 0}
+  Player: {fileID: 6170513537379741203, guid: 600acf0824f4171429310fc496a86d30, type: 3}
   image: {fileID: 2368433346701175562}
   touch: {fileID: 4268452240746494448}
   touch_trigger: {fileID: 8856244880180847648}
   powar_plat: 5
-  SP_Player: {fileID: 0}
+  SP_Player: {fileID: 5029810487475037665, guid: 600acf0824f4171429310fc496a86d30,
+    type: 3}
 --- !u!114 &4434111660871793421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 107492
+  m_InstanceId: 225734
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}

@@ -53,6 +53,7 @@ public class Trigg_attack : MonoBehaviour
         {
             yield return new WaitForSeconds(2);
             Debug.Log("Hit");
+            Death_Effect.instance.Death_Player();
 
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class touched_boo : MonoBehaviour
 
@@ -30,12 +31,11 @@ public class touched_boo : MonoBehaviour
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Hiter"))
         {
 
-            Debug.Log("Let's Play");
 
             if (Input.GetKey(KeyCode.E) && HaveTrigg.istrigg == false)
             {

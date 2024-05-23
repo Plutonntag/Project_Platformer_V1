@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -28,6 +29,7 @@ public class movetest : MonoBehaviour
     [SerializeField] bool Grounded;
     public bool plat_absorb;
     private float XTrigg;
+    private Vector2 moveInput;
     
 
     IEnumerator coroutine;
@@ -43,8 +45,9 @@ public class movetest : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
         groundJump();
+        Movement();
+        Jump();
     }
 
     private void groundJump()
@@ -52,10 +55,14 @@ public class movetest : MonoBehaviour
         Grounded = Physics2D.OverlapCircle(check.position, groundCheckRadius, collisionPlayer);
         if (Grounded == true) { 
 
-            StopAllCoroutines();
-            isplaned = false;
-         
+            //StopAllCoroutines();
+            //isplaned = false;
+
             //Debug.Log("Stop");
+        }
+        else
+        {
+            
         }
 
         
@@ -67,29 +74,31 @@ public class movetest : MonoBehaviour
         Gizmos.DrawWireSphere(check.position, groundCheckRadius);
     }
 
-    void Update() // Fonction Update appelle la fonction Movement
+    
+    public void Déplacement(InputAction.CallbackContext context)
     {
-       
-       
-
+        moveInput = context.ReadValue<Vector2>();
     }
-
 
     private void Movement() /* Cette fonction permet de faire déplacer le personnage ainsi que de faire jouer ses animation
                             */
     {
-        float moveInput = Input.GetAxis("Horizontal");
-        Vector2 moveVelocity = new Vector2(moveInput * Movespeed, rb.velocity.y);
+        //float moveInput = Input.GetAxis("Horizontal");
+        //Vector2 moveVelocity = new Vector2(moveInput * Movespeed, rb.velocity.y);
+        //Debug.Log(moveVelocity);
+        Vector2 moveVelocity = new Vector2(moveInput.x * Movespeed, rb.velocity.y);
+        rb.velocity = moveVelocity;
+
 
         rb.velocity = moveVelocity;
-        if (plat_absorb == false)
+        if (moveInput.x == 0 && plat_absorb == false)
         {
             Player_walk.SetBool("Marche", false);
             Player_idle_plat.SetBool("Idle_plat", false);
             Player_walk_plat.SetBool("Marche_plat", false);
             Player_idle.SetBool("Idle", true);
         }
-        else
+        else if( moveInput.x == 0 && plat_absorb != false) 
         {
             Player_walk.SetBool("Marche", false);
             Player_walk_plat.SetBool("Marche_plat", false);
@@ -97,28 +106,30 @@ public class movetest : MonoBehaviour
             Player_idle_plat.SetBool("Idle_plat", true);
             
         }
-        
- 
 
-        if (Input.GetKey(KeyCode.D)) // Mouvement droite
-        {
-            if (plat_absorb == false)
-            {
-                Player_idle_plat.SetBool("Idle_plat", false);
-                Player_walk_plat.SetBool("Marche_plat", false);
-                Player_idle.SetBool("Idle", false);
-                Player_walk.SetBool("Marche", true);
-            }
-            else
-            {
-                Player_idle_plat.SetBool("Idle_plat", false);
-                Player_walk_plat.SetBool("Marche", false);
-                Player_idle.SetBool("Idle", false);
-                Player_walk.SetBool("Marche_plat", true);
-            }
 
+
+        // Mouvement droite
+
+        if (moveInput.x > 0 && plat_absorb == false) {
+            Player_idle_plat.SetBool("Idle_plat", false);
+            Player_walk_plat.SetBool("Marche_plat", false);
+            Player_idle.SetBool("Idle", false);
+            Player_walk.SetBool("Marche", true);
             sprite.flipX = false;
             Box_attack_chara.offset = new Vector3(XTrigg, 0, 0);
+        }
+        else if (moveInput.x > 0 && plat_absorb != false) 
+        {
+            Player_idle_plat.SetBool("Idle_plat", false);
+            Player_walk_plat.SetBool("Marche", false);
+            Player_idle.SetBool("Idle", false);
+            Player_walk.SetBool("Marche_plat", true);
+            sprite.flipX = false;
+            Box_attack_chara.offset = new Vector3(XTrigg, 0, 0);
+        }
+
+
             //transform.Translate(Vector3.right * Movespeed * Time.deltaTime);
             //rb.velocity = new Vector2(1 * Movespeed, 0);
             //rb.velocity =  Vector3.right * Movespeed;
@@ -126,69 +137,129 @@ public class movetest : MonoBehaviour
             //Vector3 velocity = Vector3.left * Movespeed;
 
 
-        }
-        else if (Input.GetKey(KeyCode.A)) // Mouvement gauche
-        {
-            if (plat_absorb == false)
+    // Mouvement gauche
+        
+            if (moveInput.x < 0 && plat_absorb == false)
             {
                 Player_idle_plat.SetBool("Idle_plat", false);
                 Player_walk_plat.SetBool("Marche_plat", false);
                 Player_idle.SetBool("Idle", false);
                 Player_walk.SetBool("Marche", true);
-            }
-            else
+                sprite.flipX = true;
+                Box_attack_chara.offset = new Vector3(-XTrigg, 0, 0);
+        }
+            else if(moveInput.x < 0 && plat_absorb != false)
             {
                 Player_idle_plat.SetBool("Idle_plat", false);
                 Player_walk_plat.SetBool("Marche", false);
                 Player_idle.SetBool("Idle", false);
                 Player_walk.SetBool("Marche_plat", true);
-            }
-            sprite.flipX = true;
-            Box_attack_chara.offset = new Vector3(-XTrigg, 0, 0);
+                sprite.flipX = true;
+                Box_attack_chara.offset = new Vector3(-XTrigg, 0, 0);
+        }
+
             //transform.Translate(Vector3.left * Movespeed * Time.deltaTime);
             //rb.velocity = new Vector2(1 * -Movespeed, 0);
         
             //rb.AddForce(Vector3.left * Movespeed * 5);
 
-        }
-        else if ((Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.Q)) && Grounded == true)
-        {
-           rb.velocity = Vector3.zero;
-        }
 
         //                                  MECANIQUE DE SAUT
 
 
 
-        if (Input.GetKey(KeyCode.Space) && Grounded == true) // Si relaché avant le décompte, un petit saut
+
+        //if (Input.GetKey(KeyCode.Space) && Grounded == true) // Si relaché avant le décompte, un petit saut
+        //{
+        //    //Debug.Log(" petit saut");
+        //    rb.AddForce(Vector2.up * jumpHeight * 10);
+        //    if (rb.velocity.magnitude > 15)
+        //    {
+        //        rb.velocity = Vector2.zero;
+        //    };
+        //    //Debug.Log(rb.velocity);
+        //    StartCoroutine(Time_jumped());
+
+
+        //}
+
+
+        //if (Input.GetKey(KeyCode.Space) && isplaned == true) // Si relaché avant le décompte, un petit saut
+        //{
+        //    //Debug.Log(" plane");
+
+        //    rb.gravityScale = 0.9f;
+
+            
+            
+        //}
+        //else
+        //{
+        //    rb.gravityScale = 9.8f;
+        //}
+
+
+    }
+
+    public void InputJump(InputAction.CallbackContext context)
+    {
+        
+        StartCoroutine(Time_jumped() );
+        if (Grounded == true) // Si relaché avant le décompte, un petit saut
         {
             //Debug.Log(" petit saut");
+            
             rb.AddForce(Vector2.up * jumpHeight * 10);
             if (rb.velocity.magnitude > 15)
             {
                 rb.velocity = Vector2.zero;
-            };
+            }
             //Debug.Log(rb.velocity);
-            StartCoroutine(Time_jumped());
+        }
 
+        
+        if (context.canceled)
+        {
+            Debug.Log("fini");
+            isplaned = false;
+            rb.gravityScale = 9.8f;
+            StopAllCoroutines();
 
         }
 
 
-        if (Input.GetKey(KeyCode.Space) && isplaned == true) // Si relaché avant le décompte, un petit saut
+
+
+    }
+    private void Jump()
+    {
+        //if (Grounded == true) // Si relaché avant le décompte, un petit saut
+        //{
+        //    //Debug.Log(" petit saut");
+        //    rb.AddForce(Vector2.up * jumpHeight * 10);
+        //    if (rb.velocity.magnitude > 15)
+        //    {
+        //        rb.velocity = Vector2.zero;
+        //    }
+        //    //Debug.Log(rb.velocity);
+        //    StartCoroutine(Time_jumped());
+
+
+        //}
+
+        if (isplaned == true) // Si relaché avant le décompte, un petit saut
         {
             //Debug.Log(" plane");
 
             rb.gravityScale = 0.9f;
 
-            
-            
-        }
-        else
-        {
-            rb.gravityScale = 9.8f;
-        }
 
+
+        }
+        //else
+        //{
+        //    rb.gravityScale = 9.8f;
+        //}
 
     }
 
@@ -199,7 +270,7 @@ public class movetest : MonoBehaviour
         Grounded = false;
         rb.velocity = Vector2.zero;
         isplaned = true;
-        //Debug.Log("Stop");
+        Debug.Log("Stop");
 
     }
 

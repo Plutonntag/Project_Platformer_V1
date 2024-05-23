@@ -7,6 +7,7 @@ TagManager:
   - Hidden
   - Ennemie
   - Spawn
+  - Hiter
   layers:
   - Default
   - TransparentFX
