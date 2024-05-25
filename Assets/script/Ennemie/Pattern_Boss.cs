@@ -5,32 +5,47 @@ using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 public class Pattern_Boss : MonoBehaviour
 {
     [SerializeField] Rigidbody2D ArmeRb;
+    private BoxCollider2D rb_boss;
     private float Return_pointX;
     private float Return_pointY;
     private int Random_Number;
     private bool Now_Attack;
+    public Trigg_Boss_Attack HaveTrigg;
     private bool Time_Front_Attack;
     [SerializeField] float Speed = 30;
     private bool Ctime;
+    public Mov_Boss Movement;
     [SerializeField] Transform[] Attack1;
     [SerializeField] Transform[] Attack2;
     [SerializeField] Transform[] Attack3;
     private Transform[][] AllWaypoint = new Transform[3][];
     private Transform target;
     private int desPoint = 0;
-    private bool indiceChange;
-    public int i = 0;
+    private int i = 0;
     private bool CorouBoucle = true;
+    private int number_attack;
+    private int number_boo;
+    private BoxCollider2D rb_touch;
+    private bool R_retour;
+
+
+    //          Movement
+
 
     IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
     {
+        number_attack = 0;
+        number_boo = 0;
+        rb_touch = GameObject.Find("Trigger_attack_chara").GetComponent<BoxCollider2D>();
+        rb_boss = GameObject.Find("Boss").GetComponent<BoxCollider2D>();
         Return_pointX = ArmeRb.position.x;
         Return_pointY = ArmeRb.position.y;
         Now_Attack = true;
@@ -39,15 +54,25 @@ public class Pattern_Boss : MonoBehaviour
         AllWaypoint[1] = Attack2;
         AllWaypoint[2] = Attack3;
         desPoint = 1;
-        indiceChange = false;
         target = AllWaypoint[i][1];
     }
 
     // Update is called once per frame
     void Update()
     {
+        if( number_boo == 3 )
+        {
+            Debug.Log("Gagné");
+        }
+        if( number_attack == 3 ) {
+
+            Movement.bon_retour = false;
+            Movement.Recherche();
+            
+        
+        }
         //StopAllCoroutines();
-        if (Now_Attack == true)
+        else if (Now_Attack == true && R_retour)
         {
             if (Ctime)
             {
@@ -57,8 +82,10 @@ public class Pattern_Boss : MonoBehaviour
 
 
         }
+
         else
         {
+            
             switch (Random_Number)
             {
                 case 1:
@@ -75,6 +102,7 @@ public class Pattern_Boss : MonoBehaviour
                     break;
             }
 
+
         }
 
     }
@@ -90,14 +118,14 @@ public class Pattern_Boss : MonoBehaviour
             switch (Random_Number)
             {
                 case 1:
-                    Debug.Log("1");
+                    //Debug.Log("1");
 
                     return 1;
                 case 2:
-                    Debug.Log("2");
+                    //Debug.Log("2");
                     return 2;
                 case 3:
-                    Debug.Log("3");
+                    //Debug.Log("3");
                     return 3;
             }
 
@@ -178,12 +206,15 @@ public class Pattern_Boss : MonoBehaviour
         
     }
 
+
     IEnumerator Cooldown_attack()
     {
 
         yield return new WaitForSeconds(3);
         //Debug.Log("Fin cooldown");
         Random_Number = Random_Attack();
+        number_attack += 1;
+        Debug.Log(number_attack);
         Now_Attack = false;
 
     }
@@ -198,9 +229,36 @@ public class Pattern_Boss : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Death_Effect.instance.Death_Player();
+        if(collision.CompareTag("Player"))
+        {
+            Death_Effect.instance.Death_Player();
+
+        }
+    }
+    public void Attack(InputAction.CallbackContext context)
+    {
+
+        if (rb_touch.IsTouching(rb_boss) && number_attack == 3)
+        {
+
+            if (HaveTrigg.istrigg == false)
+            {
+                if (Movement.bon_retour == false)
+                {
+                    Movement.Retour_Position();
+                    if (Movement.bon_retour == true)
+                    {
+                        number_boo += 1;
+                        number_attack = 0;
+                        Debug.Log("Retour au bercaille");
+                    }
+                }
+
+
+            }
+        }
     }
 
 

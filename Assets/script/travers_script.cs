@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class travers_script : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class travers_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Travers_Fonction();
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -29,10 +30,10 @@ public class travers_script : MonoBehaviour
         }
     }
 
-    private void Travers_Fonction()
+    public void Travers_Fonction(InputAction.CallbackContext context)
     {
         //Debug.Log("Peut traverser");
-        if (rb_Player.IsTouching(Box_plat) && Input.GetKey(KeyCode.S))
+        if (rb_Player.IsTouching(Box_plat))
         {
 
             Debug.Log("traverse");

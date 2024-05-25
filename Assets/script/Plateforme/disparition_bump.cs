@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class disparition_bump : MonoBehaviour
 {
@@ -20,14 +21,14 @@ public class disparition_bump : MonoBehaviour
 
     void Update() // Fonction Update appelle la fonction Movement
     {
-        TouchTrigger();
+      
         
     }
 
-                  
 
 
-    private void TouchTrigger()
+
+    public void TouchTrigger(InputAction.CallbackContext context)
     {
 
         if (rb_player.IsTouching(touch_trigger) && Chara.plat_absorb == false)
@@ -35,7 +36,7 @@ public class disparition_bump : MonoBehaviour
 
 
 
-            if (Input.GetKey(KeyCode.J) && absorbed == false)
+            if (absorbed == false)
             {
 
                 Debug.Log("absorption");

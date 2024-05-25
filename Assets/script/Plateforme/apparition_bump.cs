@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 /*      Code permettant de faire réapparaitre la plateforme et de l'envoyer en avant
@@ -31,13 +32,12 @@ public class apparition_bump : MonoBehaviour
 
     void Update()
     {
-        position();
-        ejection();  
+        position();  
     }
 
 
 
-    private void ejection() // Fonction permettant de faire réapparaitre et d'envoyer
+    public void ejection(InputAction.CallbackContext context) // Fonction permettant de faire réapparaitre et d'envoyer
     {
         if (chara.plat_absorb == true)
         {
@@ -47,13 +47,26 @@ public class apparition_bump : MonoBehaviour
                 StartCoroutine(Thewait()); // Coroutine pour le cooldown de la réapparition
 
             }
-            else if ((Input.GetKey(KeyCode.J)) && (TimeOff == true))// si activer la touche et le cooldown terminé, le code ce lance
+            else if (TimeOff == true)// si activer la touche et le cooldown terminé, le code ce lance
             {
 
                 StartCoroutine(TheFly());
 
             }
-            else if ((Input.GetKey(KeyCode.N)) && (TimeOff == true))
+        }
+    }
+    public void ejection_under(InputAction.CallbackContext context) // Fonction permettant de faire réapparaitre et d'envoyer
+    {
+        if (chara.plat_absorb == true)
+        {
+            if ((script.absorbed == true) && (TimeOff == false && TimeOn == false))
+            {
+                TimeOn = true;
+                StartCoroutine(Thewait()); // Coroutine pour le cooldown de la réapparition
+
+            }
+
+            else if (TimeOff == true)
             {
                 StartCoroutine(ThePlat());
             }

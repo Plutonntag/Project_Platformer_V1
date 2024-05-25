@@ -8,11 +8,15 @@ public class touched_boo : MonoBehaviour
 {
     public Move_ennemie script;
     public Trigg_attack HaveTrigg;
+    private BoxCollider2D rb_touch;
+    private CapsuleCollider2D rb_ennemie;
     private bool isLeave;
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        rb_touch = GameObject.Find("Trigger_attack_chara").GetComponent<BoxCollider2D>();
+        rb_ennemie = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -31,23 +35,20 @@ public class touched_boo : MonoBehaviour
 
     }
 
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Hiter"))
+    public void Attack(InputAction.CallbackContext context) { 
+        if (rb_touch.IsTouching(rb_ennemie))
         {
-
-
-            if (Input.GetKey(KeyCode.E) && HaveTrigg.istrigg == false)
-            {
-                Debug.Log("hit");
-                GetComponent<Rigidbody2D>().velocity = Vector3.right * 10;
-                GetComponent<Rigidbody2D>().velocity = Vector3.up * 10;
-                GetComponent<CapsuleCollider2D>().enabled = false;
-                StartCoroutine(TimeLeave());
+                if (HaveTrigg.istrigg == false)
+                {
+                    Debug.Log("hit");
+                    GetComponent<Rigidbody2D>().velocity = Vector3.right * 10;
+                    GetComponent<Rigidbody2D>().velocity = Vector3.up * 10;
+                    GetComponent<CapsuleCollider2D>().enabled = false;
+                    StartCoroutine(TimeLeave());
 
 
 
-            }
+                }
         }
     }
 

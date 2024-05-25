@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Move_ennemie : MonoBehaviour
 {
@@ -53,3 +54,17 @@ public class Move_ennemie : MonoBehaviour
     }
 
 }
+//public void Attack(InputAction.CallbackContext context)
+//{
+//    if (rb_touch.IsTouching(rb_boss))
+//    {
+
+
+//        if (HaveTrigg.istrigg == false)
+//        {
+//            number_boo += 1;
+
+
+//        }
+//    }
+//}

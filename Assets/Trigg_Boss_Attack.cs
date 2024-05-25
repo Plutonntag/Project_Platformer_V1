@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Trigg_attack : MonoBehaviour
+public class Trigg_Boss_Attack : MonoBehaviour
 {
-    public Move_ennemie hit;
+    public Mov_Boss hit;
     public bool istrigg;
     IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
     {
-         istrigg = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -28,7 +29,7 @@ public class Trigg_attack : MonoBehaviour
             istrigg = true;
             hit.canHit = true;
             StartCoroutine(Hit());
-            
+
 
 
         }
@@ -64,5 +65,6 @@ public class Trigg_attack : MonoBehaviour
         yield return new WaitForSeconds(2);
         hit.canHit = false;
     }
+
 
 }

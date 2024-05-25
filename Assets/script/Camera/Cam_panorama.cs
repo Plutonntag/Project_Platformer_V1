@@ -3,27 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Cam_panorama : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera Cam_pano;
     [SerializeField] CinemachineVirtualCamera Cam_main;
     private bool D_touch;
+    private CapsuleCollider2D rb_player;
+    private BoxCollider2D bc;
     IEnumerator coroutine;
 
 
     private void Start()
     {
+        rb_player = GameObject.Find("character").GetComponent<CapsuleCollider2D>();
+        bc = GetComponent<BoxCollider2D>();
         D_touch = false;
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    public void Cam_action(InputAction.CallbackContext context)
     {
         
-        if (collision.CompareTag("Player"))
+        if (rb_player.IsTouching(bc))
         {
 
-
-            if (Input.GetKey(KeyCode.E) && D_touch == false)
+            if (D_touch == false)
             {
                 D_touch = true;
                 StartCoroutine(Time_Cam());
