@@ -27,13 +27,11 @@ public class Boss_camera : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {         
-            Boss.enabled = true;
+        {
+            Boss.fight = true;
             Cam_Boss.Priority = 10;
             Cam_Main.Priority = 1;
             Box_Boss.enabled = true;
-            Trigg_Boss.enabled =true;
-            Movement_Boss.enabled = true;
 
         }   
     }

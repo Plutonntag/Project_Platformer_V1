@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 199596211109304227}
   - component: {fileID: 6202717859328270542}
   - component: {fileID: 4434111660871793421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Platforme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
@@ -157,7 +157,7 @@ Rigidbody2D:
     m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 130428
+  m_InstanceId: 137402
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}

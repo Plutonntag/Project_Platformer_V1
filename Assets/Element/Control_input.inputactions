@@ -249,7 +249,7 @@
                 {
                     "name": "",
                     "id": "a280d713-90b3-4a62-8071-d742d78cf8d7",
-                    "path": "<Keyboard>/comma",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -260,7 +260,7 @@
                 {
                     "name": "",
                     "id": "9f8e3883-818f-47df-a6a0-be776dff41b5",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

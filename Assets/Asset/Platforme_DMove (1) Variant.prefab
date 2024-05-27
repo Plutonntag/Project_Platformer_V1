@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 4272432792719104961, guid: a9a2e79080a9b0d47863b086f97cd52d,
         type: 3}
       propertyPath: m_InstanceId
-      value: -1594
+      value: -15622
       objectReference: {fileID: 0}
     - target: {fileID: 5178774102630944796, guid: a9a2e79080a9b0d47863b086f97cd52d,
         type: 3}
@@ -162,10 +162,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platforme_DMove (1) Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3487066568487104424, guid: a1107c08e4cdf2840a0a5aa7afa88e4f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9209780378934245780, guid: a1107c08e4cdf2840a0a5aa7afa88e4f,
         type: 3}
       propertyPath: m_InstanceId
-      value: -4122
+      value: -15604
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -10,6 +11,7 @@ using UnityEngine.Rendering;
 
 public class Pattern_Boss : MonoBehaviour
 {
+    public Trigg_Boss_Attack trigg_boss;
     [SerializeField] Rigidbody2D ArmeRb;
     private BoxCollider2D rb_boss;
     private float Return_pointX;
@@ -21,6 +23,7 @@ public class Pattern_Boss : MonoBehaviour
     [SerializeField] float Speed = 30;
     private bool Ctime;
     public Mov_Boss Movement;
+    public Pattern_Boss pattern;
     [SerializeField] Transform[] Attack1;
     [SerializeField] Transform[] Attack2;
     [SerializeField] Transform[] Attack3;
@@ -29,10 +32,14 @@ public class Pattern_Boss : MonoBehaviour
     private int desPoint = 0;
     private int i = 0;
     private bool CorouBoucle = true;
-    private int number_attack;
-    private int number_boo;
+    public int number_attack;
+    public int number_boo;
     private BoxCollider2D rb_touch;
-    private bool R_retour;
+    public bool R_retour;
+    public bool fight;
+    [SerializeField] BoxCollider2D Box_Boss;
+    [SerializeField] CinemachineVirtualCamera Main_cam;
+    [SerializeField] CinemachineVirtualCamera Boss_Cam;
 
 
     //          Movement
@@ -55,56 +62,74 @@ public class Pattern_Boss : MonoBehaviour
         AllWaypoint[2] = Attack3;
         desPoint = 1;
         target = AllWaypoint[i][1];
+        R_retour = true;
+        fight = false;
+        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if( number_boo == 3 )
+        if (fight)
         {
-            Debug.Log("Gagné");
-        }
-        if( number_attack == 3 ) {
-
-            Movement.bon_retour = false;
-            Movement.Recherche();
-            
-        
-        }
-        //StopAllCoroutines();
-        else if (Now_Attack == true && R_retour)
-        {
-            if (Ctime)
+            if (number_boo >= 3)
             {
-                Ctime = false;
-                StartCoroutine(Cooldown_attack());
+                Debug.Log("Gagné");
+                Movement.enabled = false;
+                trigg_boss.enabled = false;
+                pattern.enabled = false;
+
+
+            }
+            if (Now_Attack == true && R_retour)
+            {
+                if (Ctime)
+                {
+                    Ctime = false;
+                    StartCoroutine(Cooldown_attack());
+                }
+
+
+            }
+            else if (number_attack == 4 && R_retour)
+            {
+
+                Movement.bon_retour = false;
+                Debug.Log("Marche");
+                Movement.Recherche();
+
+
+            }
+            else if (!R_retour)
+            {
+                Ennemie_Retour();
             }
 
 
-        }
-
-        else
-        {
-            
-            switch (Random_Number)
+            else
             {
-                case 1:
-                    FrontAttack();
-                    break;
-                case 2:
 
-                    VerticalAttack();
-                    //Attack
-                    break;
-                case 3:
-                    VerticalAttack();
-                    //Attack
-                    break;
+                switch (Random_Number)
+                {
+                    case 1:
+                        FrontAttack();
+                        break;
+                    case 2:
+
+                        VerticalAttack();
+                        //Attack
+                        break;
+                    case 3:
+                        VerticalAttack();
+                        //Attack
+                        break;
+                }
+
+
             }
-
-
         }
-
     }
 
 
@@ -214,7 +239,7 @@ public class Pattern_Boss : MonoBehaviour
         //Debug.Log("Fin cooldown");
         Random_Number = Random_Attack();
         number_attack += 1;
-        Debug.Log(number_attack);
+        //Debug.Log(number_attack);
         Now_Attack = false;
 
     }
@@ -235,30 +260,42 @@ public class Pattern_Boss : MonoBehaviour
         {
             Death_Effect.instance.Death_Player();
 
+            Box_Boss.enabled = false;
+            Main_cam.Priority = 10;
+            Boss_Cam.Priority = 1;
+            number_attack = 0;
+            number_boo = 0;
+            fight = false;
+
         }
     }
     public void Attack(InputAction.CallbackContext context)
     {
-
-        if (rb_touch.IsTouching(rb_boss) && number_attack == 3)
+        if (rb_touch.IsTouching(rb_boss) && R_retour)
         {
+            R_retour = false;
+        }
+    }
+    private void Ennemie_Retour()
+    {
 
-            if (HaveTrigg.istrigg == false)
-            {
+                HaveTrigg.enabled = false;
+
                 if (Movement.bon_retour == false)
                 {
                     Movement.Retour_Position();
-                    if (Movement.bon_retour == true)
-                    {
-                        number_boo += 1;
-                        number_attack = 0;
-                        Debug.Log("Retour au bercaille");
-                    }
                 }
 
+                else if (Movement.bon_retour == true)
+                {
+                    Debug.Log("Retour au bercaille");
+                    R_retour = true;
+                    HaveTrigg.enabled = true;
+                    transform.position = new Vector3(Return_pointX, Return_pointY, 0);
+                    number_boo += 1;
+                    number_attack = 0;
 
-            }
-        }
+                }
     }
 
 

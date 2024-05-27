@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,11 @@ using UnityEngine.InputSystem;
 public class Trigg_Boss_Attack : MonoBehaviour
 {
     public Mov_Boss hit;
+    public Trigg_Boss_Attack trigg_boss;
+    public Pattern_Boss Pattern;
+    [SerializeField] BoxCollider2D Box_Boss;
+    [SerializeField] CinemachineVirtualCamera Main_cam;
+    [SerializeField] CinemachineVirtualCamera Boss_cam;
     public bool istrigg;
     IEnumerator coroutine;
     // Start is called before the first frame update
@@ -52,9 +58,16 @@ public class Trigg_Boss_Attack : MonoBehaviour
     {
         while (hit.canHit)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             Debug.Log("Hit");
             Death_Effect.instance.Death_Player();
+            Pattern.fight = false;
+            Box_Boss.enabled = false;
+            Main_cam.Priority = 10;
+            Boss_cam.Priority = 1;
+            Pattern.number_attack = 0;
+            Pattern.number_boo = 0;
+
 
         }
 
