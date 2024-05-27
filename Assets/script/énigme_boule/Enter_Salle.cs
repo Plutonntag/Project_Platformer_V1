@@ -33,7 +33,7 @@ public class Enter_Salle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canva.enabled = false;
+
     }
 
     
@@ -41,7 +41,6 @@ public class Enter_Salle : MonoBehaviour
     {
         if (Capsule_Player.IsTouching(rb))
         {
-            canva.enabled = true;
 
             if (context.started)
             {
