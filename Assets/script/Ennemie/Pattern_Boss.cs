@@ -97,8 +97,9 @@ public class Pattern_Boss : MonoBehaviour
             {
 
                 Movement.bon_retour = false;
-                Debug.Log("Marche");
+                //Debug.Log("Marche");
                 Movement.Recherche();
+                transform.position = new Vector3(Return_pointX, Return_pointY, 0);
 
 
             }
@@ -266,6 +267,8 @@ public class Pattern_Boss : MonoBehaviour
             number_attack = 0;
             number_boo = 0;
             fight = false;
+            transform.position = new Vector3(Return_pointX, Return_pointY, 0);
+            //StopAllCoroutines();
 
         }
     }

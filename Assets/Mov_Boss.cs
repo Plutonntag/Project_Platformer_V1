@@ -14,7 +14,7 @@ public class Mov_Boss : MonoBehaviour
     public bool bon_retour;
 
     private Transform target_Move;
-    private int desPoint_Move = 0;
+    private int desPoint_Move = 1;
     public bool canHit;
     // Start is called before the first frame update
     void Start()
@@ -43,10 +43,11 @@ public class Mov_Boss : MonoBehaviour
             if (Vector3.Distance(transform.position, target_Move.position) < 0.3f)    // Si pas trop loin du target, on change.
             {
                 Graph.flipX = !Graph.flipX;
+                triggHit.offset = new Vector3(-triggHit.offset.x, triggHit.offset.y);
                 desPoint_Move = (desPoint_Move + 1) % Waypoint.Length;   // Utilisation du reste pour switché entre le point 1 et 2
                 target_Move = Waypoint[desPoint_Move];                   // Change de target
                 Debug.Log("Change");
-                triggHit.offset = new Vector3(-triggHit.offset.x, triggHit.offset.y);
+                
 
             }
         }
