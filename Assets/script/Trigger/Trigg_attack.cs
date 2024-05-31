@@ -6,6 +6,7 @@ public class Trigg_attack : MonoBehaviour
 {
     public Move_ennemie hit;
     public bool istrigg;
+    [SerializeField] Animator attack_animation;
     IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Trigg_attack : MonoBehaviour
             Debug.Log("Voit");
             istrigg = true;
             hit.canHit = true;
+            attack_animation.SetBool("Attack", true);
             StartCoroutine(Hit());
             
 
@@ -40,6 +42,7 @@ public class Trigg_attack : MonoBehaviour
         {
             Debug.Log("voit plus");
             istrigg = false;
+            attack_animation.SetBool("Attack", false);
             StopAllCoroutines();
             StartCoroutine(TheWait());
 
@@ -51,7 +54,7 @@ public class Trigg_attack : MonoBehaviour
     {
         while (hit.canHit)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             Debug.Log("Hit");
             Death_Effect.instance.Death_Player();
 

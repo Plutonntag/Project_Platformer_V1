@@ -7,6 +7,7 @@ public class Death_Effect : MonoBehaviour
     public static Death_Effect instance;
     private GameObject Player;
     private Transform CheckPawn;
+    [SerializeField] Animator mort_animation;
     IEnumerator coroutine;
 
     private void Awake()
@@ -35,8 +36,10 @@ public class Death_Effect : MonoBehaviour
     IEnumerator Time_Death_effect()
     {
         // Animation mort
-        yield return new WaitForSeconds(1);
+        mort_animation.SetBool("mort", true);
+        yield return new WaitForSeconds(0.55f);
         Player.transform.position = CheckPawn.position;
+        mort_animation.SetBool("mort", false);
         // Animation Respawn
     }
 

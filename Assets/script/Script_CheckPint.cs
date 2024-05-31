@@ -5,6 +5,7 @@ using UnityEngine;
 public class Script_CheckPint : MonoBehaviour
 {
     private Transform CheckPoint;
+    [SerializeField] Animator Animation;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class Script_CheckPint : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             CheckPoint.position = transform.position;
+            Animation.SetBool("Check", true);
             Debug.Log("new point");
         }
     }

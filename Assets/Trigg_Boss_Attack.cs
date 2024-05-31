@@ -12,6 +12,7 @@ public class Trigg_Boss_Attack : MonoBehaviour
     [SerializeField] BoxCollider2D Box_Boss;
     [SerializeField] CinemachineVirtualCamera Main_cam;
     [SerializeField] CinemachineVirtualCamera Boss_cam;
+    [SerializeField] Animator boss_animation;
     public bool istrigg;
     IEnumerator coroutine;
     // Start is called before the first frame update
@@ -34,6 +35,10 @@ public class Trigg_Boss_Attack : MonoBehaviour
             Debug.Log("Voit");
             istrigg = true;
             hit.canHit = true;
+            boss_animation.SetBool("attack", true);
+            boss_animation.SetBool("marche", false);
+            boss_animation.SetBool("idle", false);
+            boss_animation.SetBool("attack_true", true);
             StartCoroutine(Hit());
 
 
@@ -47,6 +52,10 @@ public class Trigg_Boss_Attack : MonoBehaviour
         {
             Debug.Log("voit plus");
             istrigg = false;
+            boss_animation.SetBool("attack", true);
+            boss_animation.SetBool("marche", true);
+            boss_animation.SetBool("idle", false);
+            boss_animation.SetBool("attack_true", false) ;
             StopAllCoroutines();
             StartCoroutine(TheWait());
 

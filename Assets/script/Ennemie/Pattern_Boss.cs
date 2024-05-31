@@ -29,6 +29,7 @@ public class Pattern_Boss : MonoBehaviour
     [SerializeField] Transform[] Attack3;
     private Transform[][] AllWaypoint = new Transform[3][];
     private Transform target;
+    [SerializeField] Transform Targets_retour;
     private int desPoint = 0;
     private int i = 0;
     private bool CorouBoucle = true;
@@ -37,9 +38,12 @@ public class Pattern_Boss : MonoBehaviour
     private BoxCollider2D rb_touch;
     public bool R_retour;
     public bool fight;
+    private GameObject Boss;
+    private SpriteRenderer boss_sprite;
     [SerializeField] BoxCollider2D Box_Boss;
     [SerializeField] CinemachineVirtualCamera Main_cam;
     [SerializeField] CinemachineVirtualCamera Boss_Cam;
+    [SerializeField] Animator boss_animation;
 
 
     //          Movement
@@ -53,6 +57,8 @@ public class Pattern_Boss : MonoBehaviour
         number_boo = 0;
         rb_touch = GameObject.Find("Trigger_attack_chara").GetComponent<BoxCollider2D>();
         rb_boss = GameObject.Find("Boss").GetComponent<BoxCollider2D>();
+        Boss = GameObject.Find("Boss");
+        boss_sprite = Boss.GetComponent<SpriteRenderer>();
         Return_pointX = ArmeRb.position.x;
         Return_pointY = ArmeRb.position.y;
         Now_Attack = true;
@@ -74,6 +80,11 @@ public class Pattern_Boss : MonoBehaviour
     {
         if (fight)
         {
+            boss_animation.SetBool("attack", false);
+            boss_animation.SetBool("marche", false);
+            boss_animation.SetBool("idle", true);
+
+
             if (number_boo >= 3)
             {
                 Debug.Log("Gagné");
@@ -129,6 +140,19 @@ public class Pattern_Boss : MonoBehaviour
                 }
 
 
+            }
+        }
+        else
+        {
+            boss_animation.SetBool("attack", false);
+            boss_animation.SetBool("marche", false);
+            boss_animation.SetBool("idle", true);
+            Movement.Retour_Position();
+            transform.position = new Vector3(Return_pointX, Return_pointY, 0);
+            Boss.transform.position = Targets_retour.position;
+            if (!boss_sprite.flipX)
+            {
+                boss_sprite.flipX = true;
             }
         }
     }
