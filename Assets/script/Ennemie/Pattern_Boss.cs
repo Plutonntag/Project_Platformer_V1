@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using UnityEngine.Rendering;
 
 public class Pattern_Boss : MonoBehaviour
@@ -44,6 +45,7 @@ public class Pattern_Boss : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera Main_cam;
     [SerializeField] CinemachineVirtualCamera Boss_Cam;
     [SerializeField] Animator boss_animation;
+    [SerializeField] PlayableDirector Cinematique;
 
 
     //          Movement
@@ -83,6 +85,8 @@ public class Pattern_Boss : MonoBehaviour
             boss_animation.SetBool("attack", false);
             boss_animation.SetBool("marche", false);
             boss_animation.SetBool("idle", true);
+            boss_animation.SetBool("touch", false);
+
 
 
 
@@ -92,6 +96,8 @@ public class Pattern_Boss : MonoBehaviour
                 Movement.enabled = false;
                 trigg_boss.enabled = false;
                 pattern.enabled = false;
+                transform.position = new Vector3(Return_pointX, Return_pointY, 0);
+                Cinematique.Play();
 
 
             }
@@ -148,6 +154,7 @@ public class Pattern_Boss : MonoBehaviour
             boss_animation.SetBool("attack", false);
             boss_animation.SetBool("marche", false);
             boss_animation.SetBool("idle", true);
+            boss_animation.SetBool("touch", false);
             Movement.desPoint_Move = 1;
             Movement.Retour_Position();
             transform.position = new Vector3(Return_pointX, Return_pointY, 0);
@@ -308,6 +315,7 @@ public class Pattern_Boss : MonoBehaviour
     {
         if (rb_touch.IsTouching(rb_boss) && R_retour)
         {
+            boss_sprite.color = new Color(255, 50, 50);
             R_retour = false;
         }
     }

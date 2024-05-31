@@ -25,9 +25,9 @@ public class DynamicBumper : MonoBehaviour
                 float bounceForce = impactSpeed;
 
                 // Applique la force de rebond
-                if(bounceForce < 12)
+                if(bounceForce < 14)
                 {
-                    rb.AddForce(-bounceDirection * baseBounceForce * 4, ForceMode2D.Impulse);
+                    rb.AddForce(-bounceDirection * baseBounceForce * 8, ForceMode2D.Impulse);
                 }
                 else if (bounceForce > 20)
                 {

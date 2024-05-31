@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Passage_ouvert : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Passage_ouvert : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera Cam_Perso;
     [SerializeField] GameObject Porte;
     [SerializeField] GameObject Personnage;
+    [SerializeField] Animator passage;
     private bool One;
     IEnumerator coroutine;
     // Start is called before the first frame update
@@ -36,10 +38,12 @@ public class Passage_ouvert : MonoBehaviour
     {
         Cam_Perso.Priority = 11;
         Cam_Perso.Follow = Porte.transform;
+        passage.SetBool("ouvre", true);
         yield return new WaitForSeconds(2);
         Cam_Perso.Priority = 10;
         Cam_Perso.Follow = Personnage.transform;
         Porte.SetActive(false);
+        
 
     }
 }

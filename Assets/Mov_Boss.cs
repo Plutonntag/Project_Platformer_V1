@@ -58,10 +58,12 @@ public class Mov_Boss : MonoBehaviour
     }
 
     public void Retour_Position()
-    {
+    {   
+        
         boss_animation.SetBool("attack", true);
         boss_animation.SetBool("marche", true);
         boss_animation.SetBool("idle", false);
+        boss_animation.SetBool("touch", true );
         target_Move = Waypoint[0];
         Vector3 dir = target_Move.position - transform.position;     //Donne la direction
         transform.Translate(dir.normalized * Speed_Move * Time.deltaTime, Space.World);  //Donne le mouvement
@@ -72,6 +74,7 @@ public class Mov_Boss : MonoBehaviour
             Graph.flipX = true;
             triggHit.offset = new Vector3(-triggHit.offset.x, triggHit.offset.y);
             bon_retour = true;
+            Graph.color = new Color(255, 255, 255);
 
         }
 
