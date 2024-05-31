@@ -9,7 +9,7 @@ public class Move_ennemie : MonoBehaviour
     public float Speed;
     [SerializeField] Transform[] Waypoint;
     [SerializeField] SpriteRenderer Graph;
-    [SerializeField] BoxCollider2D triggHit;
+    public BoxCollider2D triggHit;
 
     private Transform target;
     private int desPoint = 0;

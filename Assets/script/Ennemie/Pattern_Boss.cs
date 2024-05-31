@@ -13,7 +13,7 @@ public class Pattern_Boss : MonoBehaviour
 {
     public Trigg_Boss_Attack trigg_boss;
     [SerializeField] Rigidbody2D ArmeRb;
-    private BoxCollider2D rb_boss;
+    private CapsuleCollider2D rb_boss;
     private float Return_pointX;
     private float Return_pointY;
     private int Random_Number;
@@ -56,7 +56,7 @@ public class Pattern_Boss : MonoBehaviour
         number_attack = 0;
         number_boo = 0;
         rb_touch = GameObject.Find("Trigger_attack_chara").GetComponent<BoxCollider2D>();
-        rb_boss = GameObject.Find("Boss").GetComponent<BoxCollider2D>();
+        rb_boss = GameObject.Find("Boss").GetComponent<CapsuleCollider2D>();
         Boss = GameObject.Find("Boss");
         boss_sprite = Boss.GetComponent<SpriteRenderer>();
         Return_pointX = ArmeRb.position.x;
@@ -83,6 +83,7 @@ public class Pattern_Boss : MonoBehaviour
             boss_animation.SetBool("attack", false);
             boss_animation.SetBool("marche", false);
             boss_animation.SetBool("idle", true);
+
 
 
             if (number_boo >= 3)
@@ -147,12 +148,18 @@ public class Pattern_Boss : MonoBehaviour
             boss_animation.SetBool("attack", false);
             boss_animation.SetBool("marche", false);
             boss_animation.SetBool("idle", true);
+            Movement.desPoint_Move = 1;
             Movement.Retour_Position();
             transform.position = new Vector3(Return_pointX, Return_pointY, 0);
             Boss.transform.position = Targets_retour.position;
             if (!boss_sprite.flipX)
             {
+                
                 boss_sprite.flipX = true;
+            }
+            if (Movement.triggHit.offset.x > 0)
+            {
+                Movement.triggHit.offset = new Vector3(-Movement.triggHit.offset.x, Movement.triggHit.offset.y);
             }
         }
     }
@@ -259,8 +266,9 @@ public class Pattern_Boss : MonoBehaviour
 
     IEnumerator Cooldown_attack()
     {
-
-        yield return new WaitForSeconds(3);
+        boss_animation.SetBool("attack_true", true);
+        yield return new WaitForSeconds(1.5f);
+        boss_animation.SetBool("attack_true", false);
         //Debug.Log("Fin cooldown");
         Random_Number = Random_Attack();
         number_attack += 1;
@@ -319,6 +327,7 @@ public class Pattern_Boss : MonoBehaviour
                     R_retour = true;
                     HaveTrigg.enabled = true;
                     transform.position = new Vector3(Return_pointX, Return_pointY, 0);
+                    Movement.triggHit.offset = new Vector3(-Movement.triggHit.offset.x, Movement.triggHit.offset.y);
                     number_boo += 1;
                     number_attack = 0;
 

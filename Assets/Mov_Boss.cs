@@ -10,12 +10,12 @@ public class Mov_Boss : MonoBehaviour
     public float Speed_Move;
     [SerializeField] Transform[] Waypoint;
     [SerializeField] SpriteRenderer Graph;
-    [SerializeField] BoxCollider2D triggHit;
+    public BoxCollider2D triggHit;
     [SerializeField] Animator boss_animation;
     public bool bon_retour;
 
     private Transform target_Move;
-    private int desPoint_Move = 1;
+    public int desPoint_Move = 1;
     public bool canHit;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,7 @@ public class Mov_Boss : MonoBehaviour
             boss_animation.SetBool("attack", true);
             boss_animation.SetBool("marche", true);
             boss_animation.SetBool("idle", false);
-            desPoint_Move = 1;
+            
             Vector3 dir = target_Move.position - transform.position;     //Donne la direction
             transform.Translate(dir.normalized * Speed_Move * Time.deltaTime, Space.World);  //Donne le mouvement
 
